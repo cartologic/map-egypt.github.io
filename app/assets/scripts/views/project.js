@@ -84,7 +84,9 @@ var Project = React.createClass({
 
     const budgetBreakdown = {loan: 0, grant: 0, 'local contribution': 0};
     get(data, 'budget', []).forEach((fund) => {
-      budgetBreakdown[fund.type.en.toLowerCase()] += fund.fund.amount;
+      if (fund && fund.type && fund.type.en) {
+        budgetBreakdown[fund.type.en.toLowerCase()] += fund.fund.amount;
+      }
     });
     // set all projects from project API according project type
     const allProjects = get(this.props.api, projectsApi, []);

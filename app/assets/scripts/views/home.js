@@ -89,7 +89,9 @@ var Home = React.createClass({
       p.forEach((project) => {
         let budgets = project.budget || [];
         budgets.forEach((fund) => {
-          budgetSummary[fund.type.en.toLowerCase()] += fund.fund.amount;
+          if (fund && fund.type && fund.type.en) {
+            budgetSummary[fund.type.en.toLowerCase()] += fund.fund.amount;
+          }
         });
       });
       budgetSummary = [

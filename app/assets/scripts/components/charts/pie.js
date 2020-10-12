@@ -11,7 +11,7 @@ var PieChart = React.createClass({
     data: React.PropTypes.array,
     lang: React.PropTypes.string,
     format: React.PropTypes.func,
-    type: React.PropTypes.string
+    projectCurrency: React.PropTypes.string
   },
 
   getInitialState: function () {
@@ -58,7 +58,7 @@ var PieChart = React.createClass({
 
   render: function () {
     const { width, height } = this.state;
-    const { data, lang,type } = this.props;
+    const { data, lang,projectCurrency } = this.props;
     const radius = Math.min(width, height) / 2;
 
     // short circut if we have too small an area
@@ -77,27 +77,14 @@ var PieChart = React.createClass({
     const namesAr = data.map(d => d.name_ar);
     const rtl = lang === 'ar';
     const langSelector = rtl ? namesAr : names;
+    const currency = projectCurrency ?  projectCurrency : ""
 
     return (
       <div className='chart-container' ref='chartContainer'>
         <svg className='chart' width={width} height={height} ref='svg'>
           <g className='arc' transform={`translate(${width / 2}, ${height / 2})`}>
             {dataValues.map((d, i) => {
-              let projectCurrency ;
-              if (type === 'international') {
-                if (rtl) {
-                projectCurrency = d.data.international_ar 
-                }else{
-                  projectCurrency = d.data.international;
-                }
-              }else if (type === 'national'){
-                if (rtl) {
-                  projectCurrency = d.data.national_ar
-                }else{
-                    projectCurrency = d.data.national
-                }
-              }
-            const currency =projectCurrency ?  projectCurrency : ""
+             
               return <path
                 key={i}
                 d={arc(d)}

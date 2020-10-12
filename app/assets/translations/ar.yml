@@ -45,6 +45,8 @@ homepage:
   sds_button: 'مؤشرات استراتيجية التنمية المستدامة'
   sdg_button: 'مؤشرات أهداف التنمية المُستدامة'
   other_button: 'مؤشرات تنمية أخرى'
+  map_help_message: 'إضغط فوق موقع العلامة لإطلاع على مزيد من المعلومات حول المشروع'
+
 
 projects_indicators:
   International_projects_title: 'المشاريع الدولية'
@@ -81,6 +83,7 @@ projects_indicators:
   sds_goals: 'استراتيجية التنمية المستدامة'
   sdg_goals: 'أهداف التنمية المُستدامة'
   unavailable_chart_message: 'عرض المخطط غير متاح للبيانات الفئوية'
+  map_help_message: 'إضغط فوق موقع العلامة لإطلاع على مزيد من المعلومات حول المشروع'
 
 projects_list_view:
   sort_by_title: 'تصنيف'

@@ -13,8 +13,10 @@
 }
 
 .map__search-input {
-  position: relative;
-  width: 250px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+
   .form__input-group-button {
     position: absolute;
     top: 0;
@@ -27,6 +29,22 @@
       border-radius: 9px;
   
   }
+
+}
+.help-message.pt-20{
+  padding-top: 20px;
+}
+.help-message span{
+  &:before {
+    display: inline-block;
+    width: 18px;
+    height: 25px;
+    margin: 0 0.65rem -9px 0.65rem;
+    background-size: cover;
+    background-image: url("/assets/graphics/content/map-pin.png");
+    content: "";
+  }
+
 }
 
 .indicator-list {

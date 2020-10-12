@@ -140,6 +140,9 @@ var Home = React.createClass({
         </header>
         <div className='inpage__body'>
           <div className='inner'>
+          <div className="help-message pt-20">
+            <span className="help-marker ">{t.map_help_message}</span> 
+          </div>
             <Map markers={markers} lang={lang} />
             <section className='inpage__section'>
               <div className='overview-home'>

@@ -95,9 +95,9 @@ var Home = React.createClass({
         });
       });
       budgetSummary = [
-        {name: 'Loan', name_ar: 'قرض', value: budgetSummary.loan},
-        {name: 'Grant', name_ar: 'منحة', value: budgetSummary.grant},
-        {name: 'Local Contribution', name_ar: 'مساهمة محلية', value: budgetSummary['local contribution']}
+        {name: 'Loan', name_ar: 'قرض', value: budgetSummary.loan,international:'USD',international_ar: 'دولار', national:'EGP',national_ar:'جنية'},
+        {name: 'Grant', name_ar: 'منحة', value: budgetSummary.grant,international:'USD',international_ar: 'دولار', national:'EGP',national_ar:'جنية'},
+        {name: 'Local Contribution', name_ar: 'مساهمة محلية', value: budgetSummary['local contribution'],international:'USD',international_ar: 'دولار', national:'EGP',national_ar:'جنية'}
       ];
       return budgetSummary;
     }
@@ -183,8 +183,8 @@ var Home = React.createClass({
                   </div>
                 </div>
                 <div className='chart-content chart__inline--labels chart-content--status'>
-                  <h3>{t.chart_title_three}</h3>
-                  <PieChart data={getBudgetsSummary(internationalProjects)} lang={lang} />
+                  <h3>{t.chart_title_three} {`( ${t.currency_international_projects} )`}</h3>
+                  <PieChart data={getBudgetsSummary(internationalProjects)} lang={lang} format={shorterTally} type={'international'} />
                   <div className='status-key'>
                     <p className='status-key__label budget-loan'>{t.chart_three_label}</p>
                     <p className='status-key__label budget-grant'>{t.chart_three_label2}</p>
@@ -216,8 +216,8 @@ var Home = React.createClass({
                   </div>
                 </div>
                 <div className='chart-content chart__inline--labels chart-content--status'>
-                  <h3>{t.chart_title_three}</h3>
-                  <PieChart data={getBudgetsSummary(nationalProjects)} lang={lang} />
+                  <h3>{t.chart_title_three} {`( ${t.currency_national_projects} )`} </h3>
+                  <PieChart data={getBudgetsSummary(nationalProjects)} lang={lang}  format={shorterTally} type={'national'}/>
                   <div className='status-key'>
                     <p className='status-key__label budget-loan'>{t.chart_three_label}</p>
                     <p className='status-key__label budget-grant'>{t.chart_three_label2}</p>

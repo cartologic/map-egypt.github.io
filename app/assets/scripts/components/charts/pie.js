@@ -9,7 +9,9 @@ var PieChart = React.createClass({
 
   propTypes: {
     data: React.PropTypes.array,
-    lang: React.PropTypes.string
+    lang: React.PropTypes.string,
+    format: React.PropTypes.func,
+    type: React.PropTypes.string
   },
 
   getInitialState: function () {
@@ -29,13 +31,13 @@ var PieChart = React.createClass({
     this.setState({ width: rect.width, height: rect.height });
   },
 
-  mouseover: function (x, y, name, value) {
+  mouseover: function (x, y, name, value,currency) {
     this.setState({
       tooltip: true,
       tooltipX: x,
       tooltipY: y,
       tooltipTitle: name,
-      tooltipBody: value
+      tooltipBody: this.props.format ? this.props.format(value) + '  '+ currency  : value
     });
   },
 
@@ -56,7 +58,7 @@ var PieChart = React.createClass({
 
   render: function () {
     const { width, height } = this.state;
-    const { data, lang } = this.props;
+    const { data, lang,type } = this.props;
     const radius = Math.min(width, height) / 2;
 
     // short circut if we have too small an area
@@ -81,14 +83,26 @@ var PieChart = React.createClass({
         <svg className='chart' width={width} height={height} ref='svg'>
           <g className='arc' transform={`translate(${width / 2}, ${height / 2})`}>
             {dataValues.map((d, i) => {
-               // make values readable with commas
-              let n = parseFloat(d.value).toFixed(2);
-              let withCommas = Number(n).toLocaleString('en');
+              let projectCurrency ;
+              if (type === 'international') {
+                if (rtl) {
+                projectCurrency = d.data.international_ar 
+                }else{
+                  projectCurrency = d.data.international;
+                }
+              }else if (type === 'national'){
+                if (rtl) {
+                  projectCurrency = d.data.national_ar
+                }else{
+                    projectCurrency = d.data.national
+                }
+              }
+            const currency =projectCurrency ?  projectCurrency : ""
               return <path
                 key={i}
                 d={arc(d)}
                 className={'pie__slice__' + slugify(names[i])}
-                onMouseMove={(event) => this.mouseover(event.clientX, event.clientY, langSelector[i], withCommas)}
+                onMouseMove={(event) => this.mouseover(event.clientX, event.clientY, langSelector[i], d.value,currency)}
                 onMouseOut={this.mouseout}
               />;
             })}

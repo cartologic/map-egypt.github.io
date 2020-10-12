@@ -80,6 +80,7 @@ projects_indicators:
   donor: 'الجهة المانحة'
   sds_goals: 'استراتيجية التنمية المستدامة'
   sdg_goals: 'أهداف التنمية المُستدامة'
+  unavailable_chart_message: 'عرض المخطط غير متاح للبيانات الفئوية'
 
 projects_list_view:
   sort_by_title: 'تصنيف'

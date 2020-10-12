@@ -487,7 +487,7 @@ var IndicatorBrowse = React.createClass({
                       {typeof(indicatorChartData[0].value) === 'string' ?
                        <div className='chart-container' ref='chartContainer'>
                           <div className="note-message">
-                          Chart View is unavailable for categorical data
+                            {t.unavailable_chart_message}
                           </div>
                        </div>
                       :

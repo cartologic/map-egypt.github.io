@@ -176,6 +176,7 @@ currency_values:
   total_currency_K: 'ألف'
 
 map_labels:
+  sources_label: 'المصادر'
   description_label : 'الوصف'
   description_default_value: 'لا يوجد'
   map_value_label: 'القيمة'

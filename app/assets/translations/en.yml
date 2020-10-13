@@ -180,6 +180,7 @@ currency_values:
   total_currency_K: k
   
 map_labels:
+  sources_label: Sources
   description_label : Description
   description_default_value: Not Exit 
   map_value_label: Value

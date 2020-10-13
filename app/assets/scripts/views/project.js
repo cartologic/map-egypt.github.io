@@ -91,7 +91,7 @@ var Project = React.createClass({
     // set all projects from project API according project type
     const allProjects = get(this.props.api, projectsApi, []);
 
-    const sdsGoals = get(data, 'sds_indicator').join(',');
+    const sdsGoals = get(data, 'sds_indicator', []).join(',');
     const relatedProjects = allProjects.filter(function (project) {
       if (meta.id === project.id) { return false; } // don't include itself
       for (let i = 0; i < project.sds_indicators.length; ++i) {

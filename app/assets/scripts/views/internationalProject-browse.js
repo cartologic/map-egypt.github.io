@@ -66,6 +66,18 @@ const DONOR = {
   }
 };
 
+const SDS_ARABIC_ORDER = {
+  'المحور الأول': 1,
+  'المحور الثاني': 2,
+  'المحور الثالث': 3,
+  'المحور الرابع': 4,
+  'المحور الخامس': 5,
+  'المحور السادس': 6,
+  'المحور السابع': 7,
+  'المحور الثامن': 8,
+  'المحور التاسع': 9,
+  'المحور العاشر': 10
+};
 const SDS = {
   translationPath: 'sds_goals',
   items: (projects, lang) => {
@@ -74,6 +86,14 @@ const SDS = {
       display: `${goal} (${goals[goal]})`,
       filter: (p) => Array.isArray(p.sds_indicators) && p.sds_indicators.map(d => d[lang]).indexOf(goal) >= 0
     }));
+  },
+  sorting: (a, b) => {
+    let titleHeadRegex = /[^:]*/;
+    titleHeadRegex.lastIndex = 0;
+    const aOrder = SDS_ARABIC_ORDER[titleHeadRegex.exec(a.display)[0].trim()];
+    titleHeadRegex.lastIndex = 0;
+    const bOrder = SDS_ARABIC_ORDER[titleHeadRegex.exec(b.display)[0].trim()];
+    return bOrder > aOrder ? -1 : 1;
   }
 };
 
@@ -85,6 +105,13 @@ const SDG = {
       display: `${goal} (${goals[goal]})`,
       filter: (p) => Array.isArray(p.sdg_indicators) && p.sdg_indicators.map(d => d[lang]).indexOf(goal) >= 0
     }));
+  },
+  sorting: (a, b) => {
+    let digitRegex = /\d+/g;
+    const aIndex = digitRegex.exec(a.display)[0];
+    digitRegex.lastIndex = 0;
+    const bIndex = digitRegex.exec(b.display)[0];
+    return parseInt(aIndex) > parseInt(bIndex) ? 1 : -1;
   }
 };
 
@@ -287,28 +314,7 @@ var InternationalProjectBrowse = React.createClass({
 
                  <label className='form__label'>{t[filter.translationPath]}</label>
                  <div className='form__group'>
-                   {filter.translationPath == 'sdg_goals'
-                       ? (Array.isArray(filter.items) ? filter.items : filter.items(projects, lang, t)).sort(((a, b) => {
-                         let digitRegex = /\d+/g;
-                         const aIndex = digitRegex.exec(a.display)[0];
-                         digitRegex.lastIndex = 0;
-                         const bIndex = digitRegex.exec(b.display)[0];
-                         return parseInt(aIndex) > parseInt(bIndex) ? 1 : -1;
-                       })).map((item) => (
-                           <label key={item.display}
-                                  className={`form__option form__option--custom-checkbox ${this.state.projectsHidden ? 'disabled' : ''}`}>
-                             <input
-                                 checked={!!selectedProjectFilters.find((f) => f.display === item.display)}
-                                 type='checkbox'
-                                 name='form-checkbox'
-                                 value={item.display}
-                                 onChange={() => this.toggleSelectedFilter(item)}
-                             />
-                             <span className='form__option__text'>{item.display}</span>
-                             <span className='form__option__ui'></span>
-                           </label>
-                       ))
-                       : (Array.isArray(filter.items) ? filter.items : filter.items(projects, lang, t)).sort((a, b) => {
+                   { (Array.isArray(filter.items) ? filter.items : filter.items(projects, lang, t)).sort( filter.sorting ? filter.sorting : (a, b) => {
                          return a.display < b.display ? -1 : 1;
                        }).map((item) => (
                            <label key={item.display}

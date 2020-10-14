@@ -93,7 +93,7 @@ var Project = React.createClass({
 
     const sdsGoals = get(data, 'sds_indicator', []).join(',');
     const relatedProjects = allProjects.filter(function (project) {
-      if (meta.id === project.id) { return false; } // don't include itself
+      if (meta.id === project.id || project.sds_indicators === null) { return false; } // don't include itself
       for (let i = 0; i < project.sds_indicators.length; ++i) {
         if (sdsGoals.indexOf(project.sds_indicators[i]) >= 0) {
           return true;

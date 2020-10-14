@@ -57,6 +57,7 @@ export const getProjectCentroids = function (projects, features) {
           ontime: isOntime(project),
           region: meta.name,
           name: project.name,
+          nameArabic: project.name_ar,
           id: project.id,
           isDistrict: regions[id].isDistrict,
           location: project.location

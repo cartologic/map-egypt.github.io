@@ -109,8 +109,8 @@ const Map = React.createClass({
         icon: L.mapbox.marker.icon({'marker-symbol': 'circle', 'marker-color': '2B2342'})
       });
   
-      const status = marker.ontime  ? t.chart_two_label: t.chart_two_label2
-      const statusClass = marker.ontime  ? 'project--ontime' : 'project--delayed';
+      const status = marker.ontime === 'On Time' ? t.chart_two_label: t.chart_two_label2
+      const statusClass = marker.ontime === 'On Time' ? 'project--ontime' : 'project--delayed';
       const accessor = marker.isDistrict ? byNameDist : byNameGove;
       const location = accessor(marker.region)[locationLang];
       const markerName = lang === 'en' ? marker.name : marker.nameArabic

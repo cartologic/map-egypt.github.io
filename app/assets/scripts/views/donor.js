@@ -124,7 +124,7 @@ var Donor = React.createClass({
                       data={chartData}
                       margin={{ left: 130, right: 50, top: 10, bottom: 50 }}
                       xFormat={shortTally}
-                      yFormat={shortText}
+                     
                     />
                   </div>
                 </div>)}

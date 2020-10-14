@@ -54,7 +54,7 @@ var Donor = React.createClass({
 
     const chartData = donorProjects.map((project) => {
       return {
-        name: project.name,
+        name: lang === 'ar' ? project.name_ar : project.name,
         link: path.resolve(basepath, 'projects', project.id),
         value: project.budget.reduce((cur, item) => cur + item.fund.amount, 0)
       };

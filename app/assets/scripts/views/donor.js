@@ -122,7 +122,7 @@ var Donor = React.createClass({
                     <HorizontalBarChart
                       lang={lang}
                       data={chartData}
-                      margin={{ left: 130, right: 50, top: 10, bottom: 50 }}
+                      margin={{ left: 330, right: 10, top: 10, bottom: 50 }}
                       xFormat={shortTally}
                      
                     />

@@ -435,19 +435,22 @@ var InternationalProjectBrowse = React.createClass({
           <div className='inner'>
             <div className='map__search-input'>
               <div className='autosuggest'>
-                  <select className="search-drop"   onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
-                        <option value='0'  disabled={true}>{t.search_text}</option>
-                        {governorates.map((g) => {
-                              let display = lang === "en" ? g.name : g.nameAr;
-                              return <option 
-                                        key={g.id}
-                                        className='drop__menu-item'
-                                        value={g.id} 
-                                      >
-                                        {display}
-                                      </option>;
-                          })}            
-                  </select>
+                <select className="search-drop" onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
+                  <option value='0' disabled={true}>{t.search_text}</option>
+                  {governorates.map((g) => {
+                    let display = lang === "en" ? g.name : g.nameAr;
+                    return <option
+                      key={g.id}
+                      className='drop__menu-item'
+                      value={g.id}
+                    >
+                      {display}
+                    </option>;
+                  })}
+                </select>
+              </div>
+              <div className="help-message">
+                <span className="help-marker">{t.map_help_message}</span> 
               </div>
             </div>
           </div>

@@ -46,6 +46,7 @@ homepage:
   sds_button:  SDS Pillars Indicators
   sdg_button: SDGs Indicators
   other_button:  Other Socioeconomic Indicators 
+  map_help_message: Click On Marker Location To See More Info About Project
 
 projects_indicators:
   International_projects_title: International Projects
@@ -81,6 +82,10 @@ projects_indicators:
   donor: Donor
   sds_goals:  SDS Pillars
   sdg_goals: SDGs
+  unavailable_chart_message : Chart View is unavailable for categorical data
+  map_help_message: Click On Marker Location To See More Info About Project
+
+
 
 
 projects_list_view:
@@ -175,6 +180,7 @@ currency_values:
   total_currency_K: k
   
 map_labels:
+  sources_label: Sources
   description_label : Description
   description_default_value: Not Exit 
   map_value_label: Value

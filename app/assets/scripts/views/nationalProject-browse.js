@@ -448,6 +448,9 @@ var NationalProjectBrowse = React.createClass({
                           })}            
                   </select>
               </div>
+              <div className="help-message">
+                <span className="help-marker">{t.map_help_message}</span> 
+              </div>
             </div>
           </div>
         </div>

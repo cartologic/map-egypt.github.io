@@ -45,6 +45,8 @@ homepage:
   sds_button: 'مؤشرات استراتيجية التنمية المستدامة'
   sdg_button: 'مؤشرات أهداف التنمية المُستدامة'
   other_button: 'مؤشرات تنمية أخرى'
+  map_help_message: 'إضغط فوق موقع العلامة لإطلاع على مزيد من المعلومات حول المشروع'
+
 
 projects_indicators:
   International_projects_title: 'المشاريع الدولية'
@@ -80,6 +82,8 @@ projects_indicators:
   donor: 'الجهة المانحة'
   sds_goals: 'استراتيجية التنمية المستدامة'
   sdg_goals: 'أهداف التنمية المُستدامة'
+  unavailable_chart_message: 'عرض المخطط غير متاح للبيانات الفئوية'
+  map_help_message: 'إضغط فوق موقع العلامة لإطلاع على مزيد من المعلومات حول المشروع'
 
 projects_list_view:
   sort_by_title: 'تصنيف'
@@ -125,7 +129,7 @@ project_pages:
 
   monitoring_indicators_title: 'مؤشرات الرصد الرئيسية'
   international_funding_by_donor_title: 'التمويل - بالدولار الأمريكي'
-  national_funding_by_donor_title : 'التمويل - بالجنية المصرى'
+  national_funding_by_donor_title : 'التمويل - بالجنيه المصرى'
   status_title: 'الحالة'
   component_title: 'المكون\النشاط'
   kpi_title: 'مؤشر الأداء'
@@ -172,6 +176,7 @@ currency_values:
   total_currency_K: 'ألف'
 
 map_labels:
+  sources_label: 'المصادر'
   description_label : 'الوصف'
   description_default_value: 'لا يوجد'
   map_value_label: 'القيمة'

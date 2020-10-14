@@ -100,6 +100,7 @@ const Map = React.createClass({
 
   addClusterMarkers: function (markers, lang) {
     lang = lang || 'en';
+    const t = get(window.t, [lang, 'homepage'], {});
     const locationLang = lang === 'en' ? 'name' : 'nameAr';
     const markerLayer = this.markerLayer;
     markerLayer.clearLayers();
@@ -107,13 +108,15 @@ const Map = React.createClass({
       const leafletMarker = L.marker(marker.centroid, {
         icon: L.mapbox.marker.icon({'marker-symbol': 'circle', 'marker-color': '2B2342'})
       });
-      const status = marker.ontime ? 'On Time' : 'Delayed';
-      const statusClass = marker.ontime ? 'project--ontime' : 'project--delayed';
+  
+      const status = marker.ontime === 'On Time' ? t.chart_two_label: t.chart_two_label2
+      const statusClass = marker.ontime === 'On Time' ? 'project--ontime' : 'project--delayed';
       const accessor = marker.isDistrict ? byNameDist : byNameGove;
       const location = accessor(marker.region)[locationLang];
+      const markerName = lang === 'en' ? marker.name : marker.nameArabic
       leafletMarker.bindPopup(
         `<div class='marker__internal'>` +
-          `<h5 class='marker__title'><a href='#/${lang}/projects/${marker.id}' class='link--deco'>${marker.name}</a></h5>` +
+          `<h5 class='marker__title'><a href='#/${lang}/projects/${marker.id}' class='link--deco'>${markerName}</a></h5>` +
           `<dl class='card-meta ${statusClass}'>` +
               `<dt class='card-meta__label'>Status</dt>` +
               `<dd class='card-meta__value card-meta__value--status'>${status}</dd>` +

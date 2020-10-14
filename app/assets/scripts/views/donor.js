@@ -54,7 +54,7 @@ var Donor = React.createClass({
 
     const chartData = donorProjects.map((project) => {
       return {
-        name: project.name,
+        name: lang === 'ar' ? project.name_ar : project.name,
         link: path.resolve(basepath, 'projects', project.id),
         value: project.budget.reduce((cur, item) => cur + item.fund.amount, 0)
       };
@@ -122,9 +122,9 @@ var Donor = React.createClass({
                     <HorizontalBarChart
                       lang={lang}
                       data={chartData}
-                      margin={{ left: 130, right: 50, top: 10, bottom: 50 }}
+                      margin={{ left: 330, right: 10, top: 10, bottom: 50 }}
                       xFormat={shortTally}
-                      yFormat={shortText}
+                     
                     />
                   </div>
                 </div>)}

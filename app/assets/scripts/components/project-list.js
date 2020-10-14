@@ -15,13 +15,17 @@ const ProjectList = React.createClass({
     title: React.PropTypes.string
   },
 
+  alphabetical_sort: function (projects) {
+    return this.props.lang === 'en' ? projects.sort((a, b) => a.name < b.name ? -1 : 1) : projects.sort((a, b) => a.name_ar < b.name_ar ? -1 : 1);
+  },
+
   getInitialState: function () {
     return {
       showSort: false,
       sortAccessor: {
         name: 'Alphabetical',
         class: 'sort-alphabetical',
-        func: (projects) => projects.sort((a, b) => a.name < b.name ? -1 : 1)
+        func: this.alphabetical_sort
       }
     };
   },
@@ -51,7 +55,7 @@ const ProjectList = React.createClass({
       alphabetical: {
         name: 'Alphabetical',
         class: 'sort-alphabetical',
-        func: lang === 'en' ? (projects) => projects.sort((a, b) => a.name < b.name ? -1 : 1) : (projects) => projects.sort((a, b) => a.name_ar < b.name_ar ? -1 : 1)
+        func: this.alphabetical_sort
       },
       completeUp: {
         name: 'Percent Complete',

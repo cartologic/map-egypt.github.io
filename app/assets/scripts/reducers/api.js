@@ -33,10 +33,10 @@ export default function reducer (state = initialState, action) {
       set(state, 'projects', action.data);
       break;
     case INTERNATIONAL_PROJECTS:
-      set(state, 'InternationalProjects', action.data);
+      set(state, 'InternationalProjects', action.data.filter(project => project.published));
       break;
     case NATIONAL_PROJECTS:
-      set(state, 'NationalProjects', action.data);
+      set(state, 'NationalProjects', action.data.filter(project => project.published));
       break;
     case PROJECT:
       set(state, ['projectDetail', action.data.id], action.data);

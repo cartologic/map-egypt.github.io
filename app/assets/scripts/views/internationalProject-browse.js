@@ -12,6 +12,7 @@ import ProjectList from '../components/project-list';
 import { isOntime } from '../components/project-card';
 import { governorates } from '../utils/governorates';
 import { GOVERNORATE, DISTRICT, getProjectCentroids } from '../utils/map-utils';
+import {SDS_ARABIC_ORDER} from '../utils/constants';
 import HorizontalBarChart from '../components/charts/horizontal-bar';
 import { window } from 'global';
 
@@ -65,18 +66,6 @@ const DONOR = {
   }
 };
 
-const SDS_ARABIC_ORDER = {
-  'المحور الأول': 1,
-  'المحور الثاني': 2,
-  'المحور الثالث': 3,
-  'المحور الرابع': 4,
-  'المحور الخامس': 5,
-  'المحور السادس': 6,
-  'المحور السابع': 7,
-  'المحور الثامن': 8,
-  'المحور التاسع': 9,
-  'المحور العاشر': 10
-};
 const SDS = {
   translationPath: 'sds_goals',
   items: (projects, lang) => {

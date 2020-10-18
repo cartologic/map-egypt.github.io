@@ -9,7 +9,6 @@ import { getIndicator } from '../actions';
 import Map from '../components/map';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
-import AutoSuggest from '../components/auto-suggest';
 import { governorates } from '../utils/governorates';
 import { GOVERNORATE, DISTRICT } from '../utils/map-utils';
 import { indicatorTooltipContent } from '../utils/tooltips';
@@ -55,7 +54,7 @@ var IndicatorBrowse = React.createClass({
       // is the view set to list view or map
       listView: false,
       //  search input value
-      valueSearch:"0",
+      valueSearch: '0',
       // what's the currently active indicator
       activeIndicatorType: null,
       activeIndicatorTheme: null,
@@ -111,7 +110,7 @@ var IndicatorBrowse = React.createClass({
 
   zoomToGovernorate: function (e) {
     const governorateId = e.target.value;
-    const selectedGovernorate = governorates.find(({id}) => id == governorateId);
+    const selectedGovernorate = governorates.find(({id}) => id === governorateId);
     this.setState({
       activeGovernorate: selectedGovernorate,
       valueSearch: governorateId
@@ -456,18 +455,18 @@ var IndicatorBrowse = React.createClass({
           <div className='inner'>
             <div className='map__search-input'>
               <div className='autosuggest'>
-                <select className="search-drop"   onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
-                          <option value='0'  disabled={true}>{t.search_text}</option>
+                <select className="search-drop" onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
+                          <option value='0' disabled={true}>{t.search_text}</option>
                           {governorates.map((g) => {
-                                let display = lang === "en" ? g.name : g.nameAr;
-                                return <option 
+                            let display = lang === 'en' ? g.name : g.nameAr;
+                            return <option
                                           key={g.id}
                                           className='drop__menu-item'
-                                          value={g.id} 
+                                          value={g.id}
                                         >
                                           {display}
                                         </option>;
-                            })}            
+                          })}
                     </select>
               </div>
             </div>
@@ -484,22 +483,16 @@ var IndicatorBrowse = React.createClass({
                       <h1 className='section__title'>Indicators</h1>
                       <div className='indicator-list-container'>
                       {activeIndicators.length && this.renderActiveIndicators(activeIndicator, activeIndicators)}
-                      {typeof(indicatorChartData[0].value) === 'string' ?
+                      {typeof (indicatorChartData[0].value) === 'string' ? (
                        <div className='chart-container' ref='chartContainer'>
                           <div className="note-message">
                             {t.unavailable_chart_message}
                           </div>
-                       </div>
-                      :
-                      <HorizontalBarChart
-                      data={indicatorChartData}
-                      margin={barChartMargin}
-                      yTitle=''
-                      lang={lang}
-                      listSize={indicatorChartData.length}
-                    />
+                       </div>)
+                      : <HorizontalBarChart data={indicatorChartData} margin={barChartMargin} yTitle='' lang={lang}
+                      listSize={indicatorChartData.length} />
                       }
-                       
+
                       </div>
                     </div>
                   </section>

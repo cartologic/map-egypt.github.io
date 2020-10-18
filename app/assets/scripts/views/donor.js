@@ -9,7 +9,7 @@ import Map from '../components/map';
 import ProjectCard from '../components/project-card';
 import HorizontalBarChart from '../components/charts/horizontal-bar';
 import Print from '../components/print-btn';
-import { shortTally, tally, shortText, currency } from '../utils/format';
+import { shortTally, tally, currency } from '../utils/format';
 import slugify from '../utils/slugify';
 import { getProjectCentroids, getFeatureCollection } from '../utils/map-utils';
 import { window } from 'global';
@@ -124,7 +124,7 @@ var Donor = React.createClass({
                       data={chartData}
                       margin={{ left: 330, right: 10, top: 10, bottom: 50 }}
                       xFormat={shortTally}
-                     
+
                     />
                   </div>
                 </div>)}

@@ -9,7 +9,6 @@ import Map from '../components/map';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
 import ProjectList from '../components/project-list';
-import AutoSuggest from '../components/auto-suggest';
 import { isOntime } from '../components/project-card';
 import { governorates } from '../utils/governorates';
 import { GOVERNORATE, DISTRICT, getProjectCentroids } from '../utils/map-utils';
@@ -110,7 +109,7 @@ var NationalProjectBrowse = React.createClass({
       // is the view set to list view or map
       listView: false,
       //  search input value
-      valueSearch:"0",
+      valueSearch: '0',
       // which governorate are we zoomed into
       activeGovernorate: null,
 
@@ -146,7 +145,7 @@ var NationalProjectBrowse = React.createClass({
 
   zoomToGovernorate: function (e) {
     const governorateId = e.target.value;
-    const selectedGovernorate = governorates.find(({id}) => id == governorateId);
+    const selectedGovernorate = governorates.find(({id}) => id === governorateId);
     this.setState({
       activeGovernorate: selectedGovernorate,
       valueSearch: governorateId
@@ -292,14 +291,14 @@ var NationalProjectBrowse = React.createClass({
 
                  <label className='form__label'>{t[filter.translationPath]}</label>
                  <div className='form__group'>
-                   {filter.translationPath == 'sdg_goals'
-                       ? (Array.isArray(filter.items) ? filter.items : filter.items(projects, lang, t)).sort(((a, b) => {
+                   {filter.translationPath === 'sdg_goals'
+                       ? (Array.isArray(filter.items) ? filter.items : filter.items(projects, lang, t)).sort((a, b) => {
                          let digitRegex = /\d+/g;
                          const aIndex = digitRegex.exec(a.display)[0];
                          digitRegex.lastIndex = 0;
                          const bIndex = digitRegex.exec(b.display)[0];
                          return parseInt(aIndex) > parseInt(bIndex) ? 1 : -1;
-                       })).map((item) => (
+                       }).map((item) => (
                            <label key={item.display}
                                   className={`form__option form__option--custom-checkbox ${this.state.projectsHidden ? 'disabled' : ''}`}>
                              <input
@@ -434,22 +433,22 @@ var NationalProjectBrowse = React.createClass({
           <div className='inner'>
             <div className='map__search-input'>
               <div className='autosuggest'>
-                  <select className="search-drop"   onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
-                        <option value='0'  disabled={true}>{t.search_text}</option>
+                  <select className="search-drop" onChange={this.zoomToGovernorate} value={this.state.valueSearch} >
+                        <option value='0' disabled={true}>{t.search_text}</option>
                         {governorates.map((g) => {
-                              let display = lang === "en" ? g.name : g.nameAr;
-                              return <option 
+                          let display = lang === 'en' ? g.name : g.nameAr;
+                          return <option
                                         key={g.id}
                                         className='drop__menu-item'
-                                        value={g.id} 
+                                        value={g.id}
                                       >
                                         {display}
                                       </option>;
-                          })}            
+                        })}
                   </select>
               </div>
               <div className="help-message">
-                <span className="help-marker">{t.map_help_message}</span> 
+                <span className="help-marker">{t.map_help_message}</span>
               </div>
             </div>
           </div>

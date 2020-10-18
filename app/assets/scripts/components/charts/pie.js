@@ -31,13 +31,13 @@ var PieChart = React.createClass({
     this.setState({ width: rect.width, height: rect.height });
   },
 
-  mouseover: function (x, y, name, value,currency) {
+  mouseover: function (x, y, name, value, currency) {
     this.setState({
       tooltip: true,
       tooltipX: x,
       tooltipY: y,
       tooltipTitle: name,
-      tooltipBody: this.props.format ? this.props.format(value) + '  '+ currency  : value
+      tooltipBody: this.props.format ? this.props.format(value) + '  ' + currency : value
     });
   },
 
@@ -58,7 +58,7 @@ var PieChart = React.createClass({
 
   render: function () {
     const { width, height } = this.state;
-    const { data, lang,projectCurrency } = this.props;
+    const { data, lang, projectCurrency } = this.props;
     const radius = Math.min(width, height) / 2;
 
     // short circut if we have too small an area
@@ -77,19 +77,17 @@ var PieChart = React.createClass({
     const namesAr = data.map(d => d.name_ar);
     const rtl = lang === 'ar';
     const langSelector = rtl ? namesAr : names;
-    const currency = projectCurrency ?  projectCurrency : ""
-
+    const currency = projectCurrency !== undefined ? projectCurrency : '';
     return (
       <div className='chart-container' ref='chartContainer'>
         <svg className='chart' width={width} height={height} ref='svg'>
           <g className='arc' transform={`translate(${width / 2}, ${height / 2})`}>
             {dataValues.map((d, i) => {
-             
               return <path
                 key={i}
                 d={arc(d)}
                 className={'pie__slice__' + slugify(names[i])}
-                onMouseMove={(event) => this.mouseover(event.clientX, event.clientY, langSelector[i], d.value,currency)}
+                onMouseMove={(event) => this.mouseover(event.clientX, event.clientY, langSelector[i], d.value, currency)}
                 onMouseOut={this.mouseout}
               />;
             })}

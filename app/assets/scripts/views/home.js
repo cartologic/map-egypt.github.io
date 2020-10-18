@@ -36,7 +36,7 @@ var Home = React.createClass({
     // national projects
     let nationalProjects = [];
     nationalProjects = this.props.api.NationalProjects;
-    const totalNational= nationalProjects.length;
+    const totalNational = nationalProjects.length;
 
     function getPie (p) {
       const status = { ontime: 0, delayed: 0, extended: 0 };
@@ -143,7 +143,7 @@ var Home = React.createClass({
         <div className='inpage__body'>
           <div className='inner'>
           <div className="help-message pt-20">
-            <span className="help-marker ">{t.map_help_message}</span> 
+            <span className="help-marker ">{t.map_help_message}</span>
           </div>
             <Map markers={markers} lang={lang} />
             <section className='inpage__section'>
@@ -220,7 +220,7 @@ var Home = React.createClass({
                 </div>
                 <div className='chart-content chart__inline--labels chart-content--status'>
                   <h3>{t.chart_title_three} {`( ${t.currency_national_projects} )`} </h3>
-                  <PieChart data={getBudgetsSummary(nationalProjects)} lang={lang}  format={shorterTally} projectCurrency={t.currency_national_projects}/>
+                  <PieChart data={getBudgetsSummary(nationalProjects)} lang={lang} format={shorterTally} projectCurrency={t.currency_national_projects}/>
                   <div className='status-key'>
                     <p className='status-key__label budget-loan'>{t.chart_three_label}</p>
                     <p className='status-key__label budget-grant'>{t.chart_three_label2}</p>

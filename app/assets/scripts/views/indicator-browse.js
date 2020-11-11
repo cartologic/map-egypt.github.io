@@ -219,7 +219,8 @@ var IndicatorBrowse = React.createClass({
     const overlay = {
       id,
       category: data.category,
-      units: data.units
+      units: data.units,
+      units_ar: data.units_ar
     };
 
     // if we have an external mapbox id, skip the other checks

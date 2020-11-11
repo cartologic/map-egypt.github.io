@@ -311,7 +311,7 @@ const Map = React.createClass({
     );
   },
 
-  renderOverlayLegend: function (scale, units) {
+  renderOverlayLegend: function (scale, overlay) {
     const isQuantile = scale.hasOwnProperty('invertExtent');
     let iterable = (isQuantile ? scale.range() : scale.domain());
     let convertId = false;
@@ -347,7 +347,11 @@ const Map = React.createClass({
           );
         })}
         <span className='legend__overlay--units'>
-          {units && units.toLowerCase() !== 'unknown' ? `${units} (${t.units_label})` : ''}
+          {this.props.lang === 'en' ?
+           overlay.units && overlay.units.toLowerCase() !== 'unknown' ? `${overlay.units} (${t.units_label})` : ''
+            :
+            overlay.units_ar ? `${overlay.units_ar} (${t.units_label})` : ''
+          }
         </span>
       </span>
     );
@@ -370,7 +374,7 @@ const Map = React.createClass({
         <div className='inner'>
           <div className='legend__container'>
             {this.props.markers && this.renderMarkerLegend(this.props.markers.length)}
-            {this.state.overlayScale && this.renderOverlayLegend(this.state.overlayScale, this.props.overlay.units)}
+            {this.state.overlayScale && this.renderOverlayLegend(this.state.overlayScale, this.props.overlay)}
             {this.props.projects && this.renderProjectsNumber(this.props.projects)}
 
           </div>

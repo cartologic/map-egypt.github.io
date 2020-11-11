@@ -1,6 +1,6 @@
 main_navigation:
-  international_projects_navitem: 'المشاريع دولية'
-  national_projects_navitem: 'المشاريع المحلية'
+  international_projects_navitem: 'المشروعات دولية'
+  national_projects_navitem: 'المشروعات المحلية'
   indicators_navitem : 'المؤشرات الإقتصادية و الإجتماعية'
   about_navitem: 'عن الموقع'
   login_navitem: 'تسجيل الدخول'
@@ -11,8 +11,8 @@ homepage:
   title: 'رصد التنمية الزراعية والريفية في مصر'
   description: 'تابع مشروعات التنمية الزراعية ومواقعها على الخريطة وقارن بين أهدافها ونطاق تنفيذها واعرض المؤشرات الاجتماعية والاقتصادية على مستويات المحافظات والمراكز.'
   more: 'اقرأ المزيد'
-  international_projects_type: المشاريع الدولية 
-  national_projects_type:  المشاريع المحلية
+  international_projects_type: المشروعات الدولية 
+  national_projects_type:  المشروعات المحلية
 
   map_key_circle: 'عدد الاماكن الجغرافية للمشروع'
   map_key_marker: 'مشروع'
@@ -20,10 +20,10 @@ homepage:
   stats_overview: 'نظرة عامة عن المشروعات الزراعية'
   overview_description: 'عرض معلومات مجمعة عن المشروعات ومقارنة الاستثمارات في القطاعات الفرعية المختلفة'
   all_projects_btn: 'تصفح جميع المشروعات'
-  all_international_projects_btn: 'تصفح جميع المشاريع الدولية' 
-  all_national_projects_btn: 'تصفح جميع المشاريع المحلية'
+  all_international_projects_btn: 'تصفح جميع المشروعات الدولية' 
+  all_national_projects_btn: 'تصفح جميع المشروعات المحلية'
   chart_title_one: 'عدد المشروعات في كل قطاع فرعي'
-  chart_title_two: 'عدد المشاريع حسب الحالة'
+  chart_title_two: 'عدد المشروعات حسب الحالة'
   chart_two_label: 'في الميعاد'
   chart_two_label2: 'متأخر'
   chart_two_label3: 'ممتد'
@@ -49,8 +49,8 @@ homepage:
 
 
 projects_indicators:
-  International_projects_title: 'المشاريع الدولية'
-  National_projects_title: 'المشاريع المحلية'
+  International_projects_title: 'المشروعات الدولية'
+  National_projects_title: 'المشروعات المحلية'
   Indicators_title: 'المؤشرات الإقتصادية و الإجتماعية'
   International_projects_description: 'تصفح المشروعات المحددة على الخريطة أو شاهد قائمة بجميع المشروعات الزراعية الدولية في مصر.'
   National_projects_description: 'تصفح المشروعات المحددة على الخريطة أو شاهد قائمة بجميع المشروعات الزراعية المحلية في مصر.'
@@ -69,8 +69,8 @@ projects_indicators:
   indicators: 'المؤشرات'
   cancel: 'إلغاء'
   apply: 'تطبيق'
-  add_and_filter: 'إضافة وتصفية المشاريع'
-  all_projects: 'جميع المشاريع'
+  add_and_filter: 'إضافة وتصفية المشروعات'
+  all_projects: 'جميع المشروعات'
   reset_filters: 'إعادة التصفية'
   selected_overlays: 'المؤشرات المحددة'
   other: 'اخرى'
@@ -184,7 +184,7 @@ map_labels:
   units_label: 'الوحدات'
   map_group_label: 'عدد الاماكن الجغرافية للمشروع'
   map_project_label: 'مشروع'
-  map_projects_number: 'عدد المشاريع'
+  map_projects_number: 'عدد المشروعات'
 
 general_buttons:
   share: 'شارك'

@@ -139,7 +139,7 @@ var Project = React.createClass({
       type: disbursed.type[lang],
       value: disbursed.fund.amount
     })).sort((a, b) => a.name > b.name ? 1 : -1).map((d, i) => ({
-      name: `${d.donor} - ${SimpleDate(d.name, lang)} (${d.type})`,
+      name: `${d.donor} - ${SimpleDate(d.name, lang)} - ${d.type}`,
       value: d.value
     }));
 

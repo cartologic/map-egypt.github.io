@@ -130,6 +130,8 @@ project_pages:
   monitoring_indicators_title: 'مؤشرات الرصد الرئيسية'
   international_funding_by_donor_title: 'التمويل - بالدولار الأمريكي'
   national_funding_by_donor_title : 'التمويل - بالجنيه المصرى'
+  international_disbursement_title: 'الصرف - بالدولار الأمريكي'
+  national_disbursement_title: 'الصرف - بالجنيه المصرى'
   status_title: 'الحالة'
   component_title: 'المكون\النشاط'
   kpi_title: 'مؤشر الأداء'

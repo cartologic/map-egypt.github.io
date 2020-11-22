@@ -171,7 +171,6 @@ var Project = React.createClass({
     const description = isArabic ? data.description_ar : data.description;
     const donorsTitle = isInternationalProject ? t.international_donors_title : t.national_donors_title;
     const fundingByDonorTitle = isInternationalProject ? t.international_funding_by_donor_title : t.national_funding_by_donor_title;
-    const disbursementTitle =  isInternationalProject ? t.international_disbursement_title : t.national_disbursement_title;
     const relatedSdsProjectsTitle = isInternationalProject ? t.related_sds_international_projects_title : t.related_sds_national_projects_title;
     // get currency value according to project type
     const currencyValue = isInternationalProject ? t.currency_international_projects : t.currency_national_projects;
@@ -389,7 +388,7 @@ var Project = React.createClass({
                 </div>
                 {authenticated && disbursement.length ? (
                   <div className='chart-content chart__inline--labels'>
-                    <h3>{disbursementTitle}</h3>
+                    <h3>{t.disbursed_funds}</h3>
                     <HorizontalBarChart
                       data={disbursement}
                       margin={barChartMargin}

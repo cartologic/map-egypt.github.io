@@ -140,8 +140,7 @@ project_pages:
   monitoring_indicators_title: Key Performance Indicators
   international_funding_by_donor_title: Funding (US dollars)
   national_funding_by_donor_title : Funding (EGY EGP)
-  international_disbursement_title : Disbursement (US dollars)
-  national_disbursement_title : Disbursement (EGY EGP)
+  disbursed_funds: DISBURSED FUNDS
   status_title: Status
   component_title: Component
   kpi_title: Key Performance Indicator

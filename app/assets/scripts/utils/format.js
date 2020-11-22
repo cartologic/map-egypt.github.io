@@ -30,11 +30,11 @@ const shorterTally = (n) => {
   const t = get(window.t, [lang, 'currency_values'], {});
 
   if (n >= 1000000000) {
-    return numeral(n / 1000000000).format('0,0') + ' ' + t.total_currency_B;
+    return numeral(n / 1000000000).format('0[.]00') + ' ' + t.total_currency_B;
   } else if (n >= 1000000) {
-    return numeral(n / 1000000).format('0,0') + ' ' + t.total_currency_M;
+    return numeral(n / 1000000).format('0[.]00') + ' ' + t.total_currency_M;
   } else if (n >= 1000) {
-    return numeral(n / 1000).format('0,0') + ' ' + t.total_currency_K;
+    return numeral(n / 1000).format('0[.]00') + ' ' + t.total_currency_K;
   }
   return tally(n);
 };

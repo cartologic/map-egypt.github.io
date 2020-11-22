@@ -31,6 +31,10 @@ homepage:
   chart_three_label: 'قرض'
   chart_three_label2: 'منحة'
   chart_three_label3: 'مساهمة محلية'
+  chart_three_label4: 'جهة محلية غير هادفة للربح'
+  chart_three_label5: 'تخصيص من الميزانية الحكومية'
+  chart_three_label6: 'عينياً'
+  chart_three_label7: 'قطاع خاص'
 
   total: 'مجموع '
   in_funding: 'تمويل'

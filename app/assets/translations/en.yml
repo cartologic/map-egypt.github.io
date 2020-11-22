@@ -30,6 +30,10 @@ homepage:
   chart_three_label: Loans
   chart_three_label2: Grants
   chart_three_label3: Local Contributions
+  chart_three_label4: Local Non-Profit Organization
+  chart_three_label5: Government Budget Allocation
+  chart_three_label6: In-Kind
+  chart_three_label7: Private Sector
 
   total: Total 
   in_funding:  Funding

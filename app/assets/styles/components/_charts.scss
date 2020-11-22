@@ -118,7 +118,7 @@ svg {
     float: left;
     font-size: 0.875rem;
     color: $base-color;
-    margin-right: $global-spacing * 3;
+    margin-right: $global-spacing * 2.5;
     position: relative;
     &.last {
       margin-right: 0;
@@ -151,6 +151,19 @@ svg {
   .budget-local:before {
     background: #B6B0C8;
   }
+  .budget-allocation::before{
+    background: #b7f3ff;
+  }
+  .budget-in-kind::before{
+    background: #6099a4;
+  }
+  .budget-private::before{
+    background: #07d4ff;
+  }
+  .budget-non-profit::before{
+    background: #4d6dff;
+  }
+
 }
 .pie__slice__loan {
   fill: #2B2342;
@@ -162,6 +175,18 @@ svg {
 
 .pie__slice__local-contribution {
   fill: #B6B0C8;
+}
+.pie__slice__government-budget-allocation{
+fill: #b7f3ff;
+}
+.pie__slice__in-kind{
+  fill: #6099a4;
+}
+.pie__slice__private-sector{
+  fill: #07d4ff;
+}
+.pie__slice__local-non-profit-organization{
+  fill: #4d6dff;
 }
 /* Timeline */
 

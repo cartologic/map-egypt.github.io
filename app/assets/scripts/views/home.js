@@ -83,8 +83,8 @@ var Home = React.createClass({
 
       return bars;
     }
-
-    function getBudgetsSummary (p) {
+/*******************function for get budgets summary for international project ********************** */
+    function getInternationalBudgetsSummary (p) {
       let budgetSummary = {loan: 0, grant: 0, 'local contribution': 0};
       p.forEach((project) => {
         let budgets = project.budget || [];
@@ -98,6 +98,30 @@ var Home = React.createClass({
         {name: 'Loan', name_ar: 'قرض', value: budgetSummary.loan},
         {name: 'Grant', name_ar: 'منحة', value: budgetSummary.grant},
         {name: 'Local Contribution', name_ar: 'مساهمة محلية', value: budgetSummary['local contribution']}
+      ];
+      return budgetSummary;
+    }
+
+    /************ function for get budgets summary for national project ************/
+    function getNationalBudgetsSummary (p) {
+      let budgetSummary = {'government budget allocation':0, 'in-kind':0, loan: 0, 'private sector':0 ,'local non-profit organization': 0, grant: 0};
+      p.forEach((project) => {
+        let budgets = project.budget || [];
+        console.log(budgets)
+        budgets.forEach((fund) => {
+          if (fund && fund.type && fund.type.en) {
+            budgetSummary[fund.type.en.toLowerCase()] += fund.fund.amount;
+          }
+        });
+      });
+
+      budgetSummary = [
+        {name: 'Government Budget Allocation', name_ar: 'تخصيص من الميزانية الحكومية', value: budgetSummary['government budget allocation']},
+        {name: 'In-Kind', name_ar: 'عينياً', value: budgetSummary['in-kind']},
+        {name: 'Loan', name_ar: 'قرض', value: budgetSummary.loan},
+        {name: 'Private Sector', name_ar: 'قطاع خاص', value: budgetSummary['private sector']},
+        {name: 'Local Non-Profit Organization', name_ar: 'جهة محلية غير هادفة للربح', value: budgetSummary['local non-profit organization']},
+        {name: 'Grant', name_ar: 'منحة', value: budgetSummary.grant}
       ];
       return budgetSummary;
     }
@@ -187,7 +211,7 @@ var Home = React.createClass({
                 </div>
                 <div className='chart-content chart__inline--labels chart-content--status'>
                   <h3>{t.chart_title_three} {`( ${t.currency_international_projects} )`}</h3>
-                  <PieChart data={getBudgetsSummary(internationalProjects)} lang={lang} format={shorterTally} projectCurrency={t.currency_international_projects} />
+                  <PieChart data={getInternationalBudgetsSummary(internationalProjects)} lang={lang} format={shorterTally} projectCurrency={t.currency_international_projects} />
                   <div className='status-key'>
                     <p className='status-key__label budget-loan'>{t.chart_three_label}</p>
                     <p className='status-key__label budget-grant'>{t.chart_three_label2}</p>
@@ -220,11 +244,15 @@ var Home = React.createClass({
                 </div>
                 <div className='chart-content chart__inline--labels chart-content--status'>
                   <h3>{t.chart_title_three} {`( ${t.currency_national_projects} )`} </h3>
-                  <PieChart data={getBudgetsSummary(nationalProjects)} lang={lang} format={shorterTally} projectCurrency={t.currency_national_projects}/>
+                  <PieChart data={getNationalBudgetsSummary(nationalProjects)} lang={lang} format={shorterTally} projectCurrency={t.currency_national_projects}/>
                   <div className='status-key'>
-                    <p className='status-key__label budget-loan'>{t.chart_three_label}</p>
-                    <p className='status-key__label budget-grant'>{t.chart_three_label2}</p>
-                    <p className='status-key__label budget-local last'>{t.chart_three_label3}</p>
+                    <p className='status-key__label budget-allocation'>{t.chart_three_label5}</p>
+                    <p className='status-key__label budget-in-kind'>{t.chart_three_label6}</p>
+                    <p className='status-key__label budget-loan '>{t.chart_three_label}</p>
+                    <p className='status-key__label budget-private'>{t.chart_three_label7}</p>
+                    <p className='status-key__label budget-grant '>{t.chart_three_label2}</p>
+                    <p className='status-key__label budget-non-profit last'>{t.chart_three_label4}</p>
+                  
                   </div>
                 </div>
               </div>

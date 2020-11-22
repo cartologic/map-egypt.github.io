@@ -142,6 +142,7 @@ project_pages:
   target_title: 'الهدف'
   rate_title: 'معدل التقدم'
   date_title: 'تاريخ الرصد'
+  baseline_title: 'تقييم خط الأساس'
 
   project_comparison_title: 'مقارنة المشروعات حسب القطاع الفرعي'
   comparison_chart_title1: 'التمويل'

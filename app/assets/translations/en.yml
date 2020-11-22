@@ -148,6 +148,7 @@ project_pages:
   target_title: Target
   rate_title: Rate of Implementation
   date_title: Monitoring Date
+  baseline_title: Baseline
 
   project_comparison_title: Project Comparison By Category
   comparison_chart_title1: Funding

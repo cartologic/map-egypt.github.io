@@ -414,6 +414,7 @@ var Project = React.createClass({
                       <th className='row-target'>{t.target_title}</th>
                       <th className='row-progress'>{t.rate_title}</th>
                       <th className='row-date'>{t.date_title}</th>
+                      <th className='row-date'>{t.baseline_title}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -429,6 +430,7 @@ var Project = React.createClass({
                           <td>{tally(d.target)}</td>
                           <td>{tally(d.current)}</td>
                           <td>{formatSimpleDate(parseProjectDate(d.date))}</td>
+                          <td>{tally(d.baseline)}</td>
                         </tr>
                         );
                     })}

@@ -34,3 +34,10 @@
 .auth0-label-submit {
   font-family: $base-font-family;
 }
+.auth0-lock.auth0-lock .auth0-lock-confirmation .auth0-lock-confirmation-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 180px;
+}

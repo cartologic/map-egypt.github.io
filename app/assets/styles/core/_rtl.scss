@@ -22,7 +22,7 @@
     padding-left: $global-spacing;
     height: 100%;
   }
-
+ 
   .inpage {
 
     &__headline-actions {
@@ -136,6 +136,7 @@
   .inpage__body--alt section {
     float: right;
   }
+ 
 
   .inpage__table td:nth-of-type(n):before {
     right: 0;
@@ -578,6 +579,7 @@
   .legend__item {
     float: right;
   }
+
   .legend__image--cluster {
     margin-right: 0;
     margin-left: 0.5em;
@@ -587,9 +589,13 @@
       margin-top: 0.2rem;
     };
   }
+  .legend__label--marker:before, .help-message span:before{
+    margin: 0 0 -9px 0.65rem;
+  }
+ 
 
   .indicator-list-container .chart-container:last-child {
-    margin-right: 5rem;
+    
   }
 
   .indicator-list {

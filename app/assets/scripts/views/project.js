@@ -254,10 +254,12 @@ var Project = React.createClass({
                     </ul>
                   </li>
                   <li className='number-served'>
+                    <ul className="served-items">
                   {data.number_served.map((item, i) => {
                     return (<li key={i}>{tally(item.number_served)}
                       <small>{item.beneficiary_type[lang]}</small></li>);
                   })}
+                  </ul>
                   </li>
                 </ul>
                 <div className='inpage__overview-links'>

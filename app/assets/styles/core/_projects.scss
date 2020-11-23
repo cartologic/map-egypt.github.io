@@ -23,6 +23,7 @@
 
 .inpage-stats{
   max-height: unset;
+  display: flex;
   .number-served{
     small{
       margin-top: 0;
@@ -31,6 +32,16 @@
       margin-bottom: 5px;
     }
   }
+  .served-items{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    li{
+      box-shadow: none;
+    }
+  }
+  
 }
 
 

@@ -291,11 +291,14 @@
       float: right;
     }
   }
+  .marker__title{
+    text-align: right;
+  }
 
   .card-meta__value--status {
     margin-left: 1rem;
     padding-right: 0.75rem;
-    margin-right: 0.75rem;
+    margin-right: 0rem;
     padding-left: 0;
   }
 

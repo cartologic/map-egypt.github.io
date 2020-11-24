@@ -64,9 +64,9 @@ projects_indicators:
   search_text: Zoom to Governorate
   map_toggle_btn: Map
   list_toggle_btn: List/Chart
-  sds_dropdown: SDS Pillars Indicators
-  sdg_dropdown: SDGs Indicators
-  other_dropdown:  Other Socioeconomic Indicators 
+  sds_dropdown: SDS Pillars 
+  sdg_dropdown: SDGs 
+  other_dropdown:  Other Socioeconomic  
   compare_indicators: Add and compare development indicators listed below.
   selected_indicators: Selected Indicators
   add: Add

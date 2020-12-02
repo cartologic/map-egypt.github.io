@@ -50,6 +50,7 @@ homepage:
   sds_button:  SDS Pillars Indicators
   sdg_button: SDGs Indicators
   other_button:  Other Socioeconomic Indicators 
+  all_social_indicators: View All Social Indicators
   map_help_message: Click On Marker Location To See More Info About Project
 
 projects_indicators:

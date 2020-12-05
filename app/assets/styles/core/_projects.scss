@@ -23,6 +23,14 @@
 
 .inpage-stats{
   max-height: unset;
+  display: flex;
+  flex-wrap: wrap;
+  @include media(small-down){
+    li{
+      margin-bottom: 10px;
+      box-shadow: none;
+    }
+  }
   .number-served{
     small{
       margin-top: 0;
@@ -31,9 +39,25 @@
       margin-bottom: 5px;
     }
   }
+  .num__internal{
+    display: flex;
+    list-style: none;
+  }
+  .served-items{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    li{
+      box-shadow: none;
+    }
+  }
+  
 }
 
-
+h3.heading--deco-small{
+  display: block;
+}
 .overview-item__title {
     display: block;
     margin-bottom: $global-spacing/2;

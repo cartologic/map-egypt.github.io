@@ -14,8 +14,10 @@
 
 .map__search-input {
  display: flex;
+ flex-wrap: wrap;
  justify-content: space-between;
  align-items: center;
+ 
 
   .form__input-group-button {
     position: absolute;
@@ -29,6 +31,10 @@
       border-radius: 9px;
   
   }
+  @include media(medium-down) {
+    height: 110px;
+    
+  }
 
 }
 .help-message.pt-20{
@@ -39,7 +45,7 @@
     display: inline-block;
     width: 18px;
     height: 25px;
-    margin: 0 0.65rem -9px 0.65rem;
+    margin: 0 0.65rem -9px 0;
     background-size: cover;
     background-image: url("/assets/graphics/content/map-pin.png");
     content: "";

@@ -160,6 +160,7 @@
 }
 
 .legend__container {
+  display: flex;
   position: relative;
   padding: 1em 0;
   @extend .clearfix;
@@ -178,6 +179,10 @@
   margin-bottom: 0.75rem;
   }
 }
+.legend__markers{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .inpage__col--map {
   .legend__container {
@@ -187,10 +192,14 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     color: black;
+    @include media(small-down){
+      background-color: transparent;
+    }
   }
 }
 .legend__overlay{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .legend__item {
@@ -255,6 +264,7 @@
   border-radius: 15px;
   padding: .2em .6em;
   font-size: .8em;
+  height: 100%;
 }
 
 .leaflet-right .leaflet-control-attribution.leaflet-compact-attribution:after{

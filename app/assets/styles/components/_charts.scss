@@ -43,8 +43,7 @@
 
 .home {
   .chart__inline--labels {
-  @include col(6/12);
-  width: 47% !important;
+    width: 47%;
   @include media(small-down) {
     @include col(12/12);
   }
@@ -116,6 +115,7 @@ svg {
   margin-left: 6.5rem;
   .status-key__label {
     float: left;
+    text-align: left;
     font-size: 0.875rem;
     color: $base-color;
     margin-right: $global-spacing * 2.5;

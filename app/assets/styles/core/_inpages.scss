@@ -93,7 +93,7 @@
     background-color: #fff;
     @include col(12/12);
     margin-bottom: $global-spacing * 2;
-    padding: $global-spacing * 3;
+    padding: $global-spacing * 3  $global-spacing * 2;
     box-shadow: 0 0 0 1px $tertiary-color;
     &:first-child {
       margin-top: $global-spacing * 4;
@@ -131,6 +131,14 @@
   &__footer {
     text-align: center;
     width: 100%;
+    a{
+      @include media(small-down){
+        width: 100%;
+        min-width: unset;
+        padding: .5rem;
+        white-space:pre-wrap
+      }
+    }
       li {
         display: inline-block;
         margin-right: $global-spacing;
@@ -140,6 +148,9 @@
         @include media(small-down) {
           @include col(12/12);
           margin-top: $global-spacing;
+          a{
+            width: 90%;
+          }
         }
       }
     }
@@ -234,6 +245,9 @@
       padding: 3rem 3rem 3rem 1rem;
       @include flex(1 1 auto);
     }
+    @include media(small-down) {
+      margin-top: 4rem;
+    }
   }
   .inpage__col--map {
     color: red;
@@ -310,6 +324,10 @@
       box-shadow: none;
       margin: 0;
       padding: 0;
+    }
+    @include media(small-down) {
+      box-shadow: 0 1px 0 $tertiary-color !important;
+
     }
   }
 

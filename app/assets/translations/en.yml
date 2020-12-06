@@ -50,6 +50,7 @@ homepage:
   sds_button:  SDS 2030 Indicators
   sdg_button: SDG Indicators
   other_button:  Other Socioeconomic Indicators
+  all_social_indicators: View All Social Indicators
   map_help_message: Click on location pin to see more information on selected project
 
 projects_indicators:

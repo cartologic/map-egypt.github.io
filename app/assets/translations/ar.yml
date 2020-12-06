@@ -115,8 +115,8 @@ project_pages:
   contract_date: 'تاريخ توقيع الاتفاقية'
 
   funding_title: 'التمويل'
-  currency _international_projects: USD
-  currency_national_projects: EGP
+  currency_international_projects: 'USD'
+  currency_national_projects: 'EGP'
   budget_title: 'الميزانية'
   funding_loans_title: 'قرض'
   funding_grants_title: 'منحة'

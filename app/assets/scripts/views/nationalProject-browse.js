@@ -160,7 +160,7 @@ var NationalProjectBrowse = React.createClass({
 
   zoomToGovernorate: function (e) {
     const governorateId = e.target.value;
-    const selectedGovernorate = governorates.find(({id}) => id === governorateId);
+    const selectedGovernorate = governorates.find(({id}) => id == governorateId);
     this.setState({
       activeGovernorate: selectedGovernorate,
       valueSearch: governorateId

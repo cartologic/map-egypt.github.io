@@ -320,17 +320,18 @@ var Project = React.createClass({
                     </ul>
                   </div>
                 )}
-                {data.kmi && (
+                {data.components && (   
                   <div className='overview-item--alt'>
                     <h2 className='overview-item__title heading-alt'>{t.kmi_components}</h2>
                     <ul className='link-list'>
-                    {uniq(get(data, 'kmi', []).map((kmi) => isArabic ? kmi.component_ar : kmi.component.trim())).map(component => {
+                    {data.components.map((component,i) => {
                       return (
-                          <li key={component}>
-                            <span>{component}</span>
+                          <li key={i}>
+                            <span>{isArabic ? component.component_ar : component.component}</span>
                           </li>
                         );
-                    })}
+                      })
+                   }
                     </ul>
                   </div>
                 )}

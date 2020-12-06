@@ -107,7 +107,6 @@ var Home = React.createClass({
       let budgetSummary = {'government budget allocation':0, 'in-kind':0, loan: 0, 'private sector':0 ,'local non-profit organization': 0, grant: 0};
       p.forEach((project) => {
         let budgets = project.budget || [];
-        console.log(budgets)
         budgets.forEach((fund) => {
           if (fund && fund.type && fund.type.en) {
             budgetSummary[fund.type.en.toLowerCase()] += fund.fund.amount;
@@ -265,9 +264,8 @@ var Home = React.createClass({
             <h2 className='section__title'>{t.other_indicators_title}</h2>
             <p className='section__description'>{t.other_indicators_description}</p>
             <ul className='section__footer'>
-              <li><Link to={'/' + lang + '/projects_sds'} type='button' className='button button--primary button--large'>{t.sds_button}</Link></li>
-              <li><Link to={'/' + lang + '/projects_sdg'} type='button' className='button button--primary button--large'>{t.sdg_button}</Link></li>
-              <li><Link to={'/' + lang + '/projects_other'} type='button' className='button button--primary button--large'>{t.other_button}</Link></li>
+              <li><Link to={'/' + lang + '/indicators'} type='button' className='button button--primary button--large'>{t.all_social_indicators}</Link></li>
+             
             </ul>
           </section>
         </div>

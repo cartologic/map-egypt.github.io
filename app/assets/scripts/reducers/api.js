@@ -42,7 +42,7 @@ export default function reducer (state = initialState, action) {
       set(state, ['projectDetail', action.data.id], action.data);
       break;
     case INDICATORS:
-      set(state, 'indicators', action.data);
+      set(state, 'indicators', action.data.filter(indicator => indicator.published));
       break;
     case INDICATOR:
       set(state, ['indicatorDetail', action.data.id], action.data);

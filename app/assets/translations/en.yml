@@ -34,6 +34,11 @@ homepage:
   chart_three_label5: Government Budget Allocation
   chart_three_label6: In-Kind
   chart_three_label7: Private Sector
+  on_time: On Time,
+  planned: Planned
+  delayed: Delayed,
+  extended: Extended.
+  closed: Closed
 
   total: Total
   in_funding:  Funding

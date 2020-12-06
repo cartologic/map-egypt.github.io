@@ -35,6 +35,11 @@ homepage:
   chart_three_label5: 'تخصيص من الميزانية الحكومية'
   chart_three_label6: 'عينياً'
   chart_three_label7: 'قطاع خاص'
+  on_time: 'فى الميعاد'
+  planned: 'مخطط'
+  delayed: 'متأخر'
+  extended: 'ممتد'
+  closed: 'مغلق'
 
   total: 'مجموع'
   in_funding: 'تمويل'

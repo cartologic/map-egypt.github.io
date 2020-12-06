@@ -110,6 +110,9 @@
         .project--ontime & {
           background: $success-color;
         }
+        .project--planned & {
+          background: $info-color;
+        }
         .project--delayed & {
           background: $warning-color;
         }

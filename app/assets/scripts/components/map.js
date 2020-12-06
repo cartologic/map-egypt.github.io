@@ -108,18 +108,18 @@ const Map = React.createClass({
       const leafletMarker = L.marker(marker.centroid, {
         icon: L.mapbox.marker.icon({'marker-symbol': 'circle', 'marker-color': '2B2342'})
       });
-
-      const status = marker.ontime === 'On Time' ? t.chart_two_label : t.chart_two_label2;
-      const statusClass = marker.ontime === 'On Time' ? 'project--ontime' : 'project--delayed';
+      
+      const status = (marker.ontime).split(' ').join('_').toLowerCase()
+      const statusClass =(marker.ontime).split(' ').join('').toLowerCase()
       const accessor = marker.isDistrict ? byNameDist : byNameGove;
       const location = accessor(marker.region)[locationLang];
       const markerName = lang === 'en' ? marker.name : marker.nameArabic;
       leafletMarker.bindPopup(
         `<div class='marker__internal'>` +
           `<h5 class='marker__title'><a href='#/${lang}/projects/${marker.id}' class='link--deco'>${markerName}</a></h5>` +
-          `<dl class='card-meta ${statusClass}'>` +
+          `<dl class='card-meta ${'project--'+statusClass }'>` +
               `<dt class='card-meta__label'>Status</dt>` +
-              `<dd class='card-meta__value card-meta__value--status'>${status}</dd>` +
+              `<dd class='card-meta__value card-meta__value--status'>${t[status]}</dd>` +
               `<dt class='card-meta__label'>Location</dt>` +
               `<dd class='card-meta__value card-meta__value--location'>${marker.village ? marker.village + ', ' : ''}${location}</dd>` +
             `</dl>` +

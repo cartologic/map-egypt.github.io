@@ -116,12 +116,17 @@
   }
   td:nth-of-type(5):before { 
     @include media(small-down){
-    content: "Progress"; 
+    content: "Achieved"; 
     }
   }
   td:nth-of-type(6):before { 
     @include media(small-down){
     content: "Date"; 
+    }
+  }
+  td:nth-of-type(7):before { 
+    @include media(small-down){
+    content: "BaseLine"; 
     }
   }
   .cell-name {

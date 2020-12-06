@@ -143,6 +143,43 @@
     text-align: right;
   }
 
+  .inpage__table{
+    td:nth-of-type(1):before { 
+      @include media(small-down){
+      content: "الحالة"; 
+      }
+    }
+    td:nth-of-type(2):before { 
+      @include media(small-down){
+      content: "المكون"; 
+      }
+    }
+    td:nth-of-type(3):before { 
+      @include media(small-down){
+      content: "مؤشر الأداء"; 
+      }
+    }
+    td:nth-of-type(4):before { 
+      @include media(small-down){
+      content: "الهدف"; 
+      }
+    }
+    td:nth-of-type(5):before { 
+      @include media(small-down){
+      content: "معدل التقدم"; 
+      }
+    }
+    td:nth-of-type(6):before { 
+      @include media(small-down){
+      content: "تاريخ المتابعة"; 
+      }
+    }
+    td:nth-of-type(7):before { 
+      @include media(small-down){
+      content: "تقييم خط الأساس"; 
+      }
+    }
+  }
   .inpage__section--overview {
     .inpage__col--content {
       @include media(medium-up){

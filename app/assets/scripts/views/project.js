@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { get } from 'object-path';
-import { uniq } from 'lodash';
+import { uniq, _ } from 'lodash';
 import { getProject } from '../actions';
 import slugify from '../utils/slugify';
 import { formatDate, SimpleDate, formatSimpleDate, parseProjectDate } from '../utils/date';
@@ -126,12 +126,29 @@ var Project = React.createClass({
       link: d.link,
       value: get(d, 'project.number_served', []).reduce((total, item) => total + get(item, 'number_served'), 0)
     }));
+    function getDonors() {
+      let donorsAmount = [];
+      let amountMoney = 0;
+      const budget = get(data, "budget", []);
 
-    const donors = get(data, 'budget', []).map((budget) => ({
-      name: budget.donor[lang], // getDonorName(budget.donor, lang),
-      link: linkPath(basepath, 'donor', budget.donor.en),
-      value: budget.fund.amount
-    })).sort((a, b) => b.value > a.value ? -1 : 1);
+      budget.forEach(function (primaryDonor) {
+        budget.map((secondDonor) => {
+          if (primaryDonor.donor[lang] === secondDonor.donor[lang]) {
+            amountMoney += secondDonor.fund.amount;
+          }
+        });
+        donorsAmount.push({
+          name: primaryDonor.donor[lang],
+          link: linkPath(basepath, "donor", primaryDonor.donor.en),
+          value: amountMoney,
+        });
+        amountMoney = 0;
+      });
+      let donors = _.uniqWith(donorsAmount, _.isEqual).sort((a, b) =>
+        b.value > a.value ? -1 : 1
+      );
+      return donors;
+    }
 
     const disbursement = get(data, 'disbursed', []).map((disbursed) => ({
       name: parseProjectDate(disbursed.date),
@@ -148,7 +165,7 @@ var Project = React.createClass({
     const csvChartData = [
       {
         title: fundingTitle,
-        data: donors
+        data: getDonors()
       },
       {
         title: 'Funding By Project',
@@ -227,7 +244,7 @@ var Project = React.createClass({
               <div className='tags__group'>
                 <p className='tags__label'>{donorsTitle}:</p>
                 <div className='inpage__subtitles'>
-                  {donors.map((donor) => <span key={donor.name} className='inpage__subtitle'>
+                  {getDonors().map((donor) => <span key={donor.name} className='inpage__subtitle'>
                       <Link to={donor.link} className='link--secondary' href=''>{donor.name}</Link>&nbsp;
                     </span>)}
                 </div>
@@ -383,7 +400,7 @@ var Project = React.createClass({
                   <h3>{fundingByDonorTitle}</h3>
                   <HorizontalBarChart
                     lang={lang}
-                    data={donors}
+                    data={getDonors()}
                     margin={barChartMargin}
                     yTitle=''
                     xFormat={shortTally}

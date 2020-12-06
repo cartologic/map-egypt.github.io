@@ -147,7 +147,7 @@ project_pages:
   kpi_title: Key Performance Indicator
   baseline_title: Baseline
   target_title: Target
-  rate_title: Rate of Implementation
+  rate_title: Achieved
   date_title: Monitoring Date
 
   project_comparison_title: Project Comparison by Category

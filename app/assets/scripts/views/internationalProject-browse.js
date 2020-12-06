@@ -49,7 +49,7 @@ const CATEGORY = {
   items: (projects, lang) => {
     const categories = countByProp(projects.reduce((a, b) => a.concat(b.categories), []), lang);
     return Object.keys(categories).map((category) => ({
-      display: `${category} (${categories[category]})`,
+      display: `${category} `,
       filter: (p) => Array.isArray(p.categories) && p.categories.map(d => d[lang]).indexOf(category) >= 0
     }));
   }
@@ -60,7 +60,7 @@ const DONOR = {
   items: (projects, lang) => {
     const donors = countByProp(projects.reduce((a, b) => a.concat(b.budget), []), `donor.${lang}`);
     return Object.keys(donors).map((donor) => ({
-      display: `${donor} (${donors[donor]})`,
+      display: `${donor}`,
       filter: (p) => Array.isArray(p.budget) && p.budget.find((budget) => budget.donor[lang] === donor)
     }));
   }
@@ -71,7 +71,7 @@ const SDS = {
   items: (projects, lang) => {
     const goals = countByProp(projects.reduce((a, b) => a.concat(b.sds_indicators), []), lang);
     return Object.keys(goals).sort().map((goal) => ({
-      display: `${goal} (${goals[goal]})`,
+      display: `${goal}`,
       filter: (p) => Array.isArray(p.sds_indicators) && p.sds_indicators.map(d => d[lang]).indexOf(goal) >= 0
     }));
   },
@@ -90,7 +90,7 @@ const SDG = {
   items: (projects, lang) => {
     const goals = countByProp(projects.reduce((a, b) => a.concat(b.sdg_indicators), []), lang);
     return Object.keys(goals).map((goal) => goal).sort().map((goal) => ({
-      display: `${goal} (${goals[goal]})`,
+      display: `${goal} `, //(${goals[goal]})
       filter: (p) => Array.isArray(p.sdg_indicators) && p.sdg_indicators.map(d => d[lang]).indexOf(goal) >= 0
     }));
   },
@@ -315,7 +315,7 @@ var InternationalProjectBrowse = React.createClass({
                                  onChange={() => this.toggleSelectedFilter(item)}
                              />
                              <span className='form__option__text'>{item.display}</span>
-                             <span className='form__option__ui'></span>
+                   <span className='form__option__ui'>{console.log(item)}</span>
                            </label>
                        ))}
                 </div>

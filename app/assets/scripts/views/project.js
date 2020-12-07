@@ -23,7 +23,6 @@ import HorizontalBarChart from '../components/charts/horizontal-bar';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
 
-const barChartMargin = { left: 500, right: 20, top: 10, bottom: 50 };
 
 function linkPath (base, type, id) {
   return path.resolve(base, type, slugify(id));
@@ -43,13 +42,20 @@ var Project = React.createClass({
 
   getInitialState: function () {
     return {
-      authenticated: hasValidToken()
+      authenticated: hasValidToken(),
+      barChartMargin = { left: 500, right: 20, top: 10, bottom: 50 }
     };
   },
 
   componentWillMount: function () {
     if (hasValidToken()) {
       this.setState({ authenticated: true });
+    }
+    if(window.innerWidth < 460){
+      this.setState({
+        barChartMargin = { left: 150, right: 20, top: 10, bottom: 50 }
+      }) 
+
     }
     this.props.dispatch(getProject(this.props.params.id));
   },

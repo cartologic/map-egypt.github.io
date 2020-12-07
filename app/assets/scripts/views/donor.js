@@ -112,7 +112,7 @@ var Donor = React.createClass({
                 <Map markers={markers} location={mapLocation} lang={lang} />
               </div>
               <div className='inpage__col--content'>
-                <ul className='inpage-stats'>
+                <ul className='inpage-stats d-block'>
                   <li> {currency(shortTally(totalBudget))} <small>{t.donor_stats_funds}</small></li>
                   <li> {tally(donorProjects.length)} <small>{singleProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.donor_stats_funded_3}</small></li>
                 </ul>

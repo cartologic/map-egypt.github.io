@@ -26,6 +26,8 @@ var Donor = React.createClass({
 
   render: function () {
     const projects = get(this.props, 'api.projects', []);
+    const isMobile = window.innerWidth < 460
+    const barChartMargin = isMobile ?  { left: 150, right: 20, top: 10, bottom: 50 } : { left: 330, right: 10, top: 10, bottom: 50 }
     if (projects.length === 0) {
       return <div></div>; // TODO loading indicator
     }
@@ -35,7 +37,6 @@ var Donor = React.createClass({
     let donorMeta;
     const donorProjects = projects.filter((project) => {
       return get(project, 'budget', []).some((item) => {
-        console.log(item);
         let sluggedName = slugify(item.donor.en);
         if (sluggedName === donorName) {
           donorMeta = item.donor;
@@ -122,7 +123,7 @@ var Donor = React.createClass({
                     <HorizontalBarChart
                       lang={lang}
                       data={chartData}
-                      margin={{ left: 330, right: 10, top: 10, bottom: 50 }}
+                      margin={barChartMargin}
                       xFormat={shortTally}
 
                     />

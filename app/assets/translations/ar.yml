@@ -43,8 +43,8 @@ homepage:
 
   total: 'مجموع'
   in_funding: 'تمويل'
-  currency_international_projects: USD
-  currency_national_projects: EGP
+  currency_international_projects: 'دولار'
+  currency_national_projects: 'ج.م'
   total_donors: 'مجموع الجهات المانحة'
   donor_collaborations: 'تعاون بين المانحين'
 
@@ -120,8 +120,8 @@ project_pages:
   contract_date: 'تاريخ توقيع الاتفاقية'
 
   funding_title: 'التمويل'
-  currency_international_projects: 'USD'
-  currency_national_projects: 'EGP'
+  currency_international_projects: 'دولار'
+  currency_national_projects: 'ج.م'
   budget_title: 'الميزانية'
   funding_loans_title: 'قرض'
   funding_grants_title: 'منحة'

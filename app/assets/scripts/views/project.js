@@ -43,7 +43,7 @@ var Project = React.createClass({
   getInitialState: function () {
     return {
       authenticated: hasValidToken(),
-      barChartMargin = { left: 500, right: 20, top: 10, bottom: 50 }
+      barChartMargin : { left: 500, right: 20, top: 10, bottom: 50 }
     };
   },
 
@@ -53,7 +53,7 @@ var Project = React.createClass({
     }
     if(window.innerWidth < 460){
       this.setState({
-        barChartMargin = { left: 150, right: 20, top: 10, bottom: 50 }
+        barChartMargin : { left: 150, right: 20, top: 10, bottom: 50 }
       }) 
 
     }
@@ -197,6 +197,7 @@ var Project = React.createClass({
     const relatedSdsProjectsTitle = isInternationalProject ? t.related_sds_international_projects_title : t.related_sds_national_projects_title;
     // get currency value according to project type
     const currencyValue = isInternationalProject ? t.currency_international_projects : t.currency_national_projects;
+    const {barChartMargin} = this.state
     return (
       <section className='inpage'>
         <header className='inpage__header'>

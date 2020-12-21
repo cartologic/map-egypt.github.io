@@ -437,10 +437,11 @@ var Project = React.createClass({
                       <th className='row-name'>{t.component_title}</th>
                       <th className='row-kpi'>{t.kpi_title}</th>
                       <th className='row-status'>{t.status_title}</th>
+                      <th className='row-date'>{t.baseline_title}</th>
                       <th className='row-target'>{t.target_title}</th>
                       <th className='row-progress'>{t.rate_title}</th>
                       <th className='row-date'>{t.date_title}</th>
-                      <th className='row-date'>{t.baseline_title}</th>
+                     
                     </tr>
                   </thead>
                   <tbody>
@@ -453,10 +454,11 @@ var Project = React.createClass({
                           <td className={'project--' + key}>
                             <p className='activity-name'>{d.status[lang]}</p>
                           </td>
+                          <td>{tally(d.baseline)}</td>
                           <td>{tally(d.target)}</td>
                           <td>{tally(d.current)}</td>
                           <td>{formatSimpleDate(parseProjectDate(d.date))}</td>
-                          <td>{tally(d.baseline)}</td>
+                        
                         </tr>
                         );
                     })}

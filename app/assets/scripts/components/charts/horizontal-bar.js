@@ -122,10 +122,12 @@ var HorizontalBarChart = React.createClass({
     let xRange = [0, innerWidth];
     let xScale = scaleLinear().range([0, innerWidth]).domain([0, max(dataValues)]);
     let axisScale = rtl ? scaleLinear().range([innerWidth, 0]).domain([0, max(dataValues)]) : xScale;
-    let xLabels = xScale.ticks(3);
+    let xLabels = max(dataValues) > 1 ? xScale.ticks(3) : xScale.ticks(1) ;
     let yScale = ordinalScale.rangeRound([innerHeight, 0]).domain(dataNames);
     let yLabels = dataNames;
     let rectHeight = yScale.bandwidth();
+console.log(xLabels)
+console.log(dataValues)
 
     return (
       <div className='chart-container' ref='chartContainer'>

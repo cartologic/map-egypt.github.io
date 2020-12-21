@@ -488,19 +488,7 @@ var Project = React.createClass({
                   activeProject={projectDisplayName}
                 />
               </div>
-              {authenticated ? (
-                <div className='chart-content chart__inline--labels'>
-                  <h3>{t.comparision_chart_title3}</h3>
-                  <HorizontalBarChart
-                    lang={lang}
-                    data={served}
-                    margin={barChartMargin}
-                    yTitle=''
-                    xFormat={tally}
-                    activeProject={projectDisplayName}
-                  />
-                </div>
-              ) : null}
+              
             </section>
           </div>
           <section className='inpage__section--bleed'>

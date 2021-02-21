@@ -104,7 +104,7 @@ const SDG = {
   }
 };
 
-const projectFilters = [STATUS, CATEGORY, DONOR, SDS, SDG];
+const projectFilters = [CATEGORY, DONOR, SDS, SDG];
 
 var NationalProjectBrowse = React.createClass({
   displayName: 'National ProjectBrowse',

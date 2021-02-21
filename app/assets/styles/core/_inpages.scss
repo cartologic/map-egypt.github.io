@@ -101,8 +101,11 @@
     &:last-child {
       margin-bottom: $global-spacing * 4;
     };
-}
+    @include media(small-down) {
+      padding: $global-spacing * 3  0
+    }
 
+    }
   &__section--bleed {
     @include col(12/12);
     background-color: #fff;
@@ -130,6 +133,7 @@
   }
   &__footer {
     text-align: center;
+    padding: 0  ($global-spacing * 2);
     width: 100%;
     a{
       @include media(small-down){
@@ -239,7 +243,7 @@
   }
   .inpage__col--content {
     @include col(12/12);
-    padding: 3rem;
+    padding: 3rem 2rem;
     @include media(medium-up) {
       @include col(7/12);
       padding: 3rem 3rem 3rem 1rem;

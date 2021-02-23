@@ -118,16 +118,23 @@ var HorizontalBarChart = React.createClass({
     const ordinalScale = scaleBand()
     .paddingInner(0.6)
     .paddingOuter(0.2);
-
+    const getXLabels = ()=>{
+      if( max(dataValues)  === 1){
+        return  xScale.ticks(1)
+      }
+      if(max(dataValues)  === 2){
+        return  xScale.ticks(2)
+      }else{
+        return  xScale.ticks(3)
+      }
+    }
     let xRange = [0, innerWidth];
     let xScale = scaleLinear().range([0, innerWidth]).domain([0, max(dataValues)]);
     let axisScale = rtl ? scaleLinear().range([innerWidth, 0]).domain([0, max(dataValues)]) : xScale;
-    let xLabels = max(dataValues) > 1 ? xScale.ticks(3) : xScale.ticks(1) ;
+    let xLabels = getXLabels()
     let yScale = ordinalScale.rangeRound([innerHeight, 0]).domain(dataNames);
     let yLabels = dataNames;
     let rectHeight = yScale.bandwidth();
-console.log(xLabels)
-console.log(dataValues)
 
     return (
       <div className='chart-container' ref='chartContainer'>

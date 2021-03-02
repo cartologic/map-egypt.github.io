@@ -185,7 +185,8 @@ donor_pages:
   national_donor_stats_funded_3: 'المُمولة'
   international_donor_chart_title: 'التمويل - بالدولار الأمريكي'
   national_donor_chart_title: 'التمويل - بالجنيه المصرى'
-  funded_title: 'المشروعات المُمولة'
+  international_funded_title: 'المشروعات المانحة'
+  national_funded_title: 'المشروعات المُمولة'
   currency_international_projects: 'دولار'
   currency_national_projects: 'ج.م'
 

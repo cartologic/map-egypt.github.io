@@ -169,19 +169,36 @@ var Donor = React.createClass({
           </div>
 
           <section className='inpage__section--bleed inpage__section--print'>
-            <div className='inner'>
-              <h1 className='section__title heading--small'>{t.funded_title}</h1>
-              <ul className='projects-list'>
-                {donorProjects.map((p) => {
-                  return (
-                    <li key={p.id} className='projects-list__card'>
-                      <ProjectCard lang={lang}
-                        project={p} />
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+              {internationalProjects.length > 0 && (
+                <div className="inner">
+                  <h1 className='section__title heading--small'>{t.international_funded_title}</h1>
+                  <ul className='projects-list'>
+                    {internationalProjects.map((p) => {
+                      return (
+                        <li key={p.id} className='projects-list__card'>
+                          <ProjectCard lang={lang}
+                            project={p} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+               {nationalProjects.length > 0 && (
+                <div className="inner">
+                  <h1 className='section__title heading--small'>{t.national_funded_title}</h1>
+                  <ul className='projects-list'>
+                    {nationalProjects.map((p) => {
+                      return (
+                        <li key={p.id} className='projects-list__card'>
+                          <ProjectCard lang={lang}
+                            project={p} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
           </section>
         </div>
       </section>

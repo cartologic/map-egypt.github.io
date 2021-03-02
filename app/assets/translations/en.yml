@@ -188,7 +188,8 @@ donor_pages:
   international_donor_stats_funded_3: Donor
   national_donor_stats_funded_3: Funded
   donor_chart_title: Amount Funded (USD )
-  funded_title: Projects Funded
+  international_funded_title: Projects Donor
+  national_funded_title: Projects Funded
   currency_international_projects: USD
   currency_national_projects : EGP
 

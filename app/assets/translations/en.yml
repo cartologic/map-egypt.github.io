@@ -178,13 +178,19 @@ category_pages:
   category_complete_chart_title: Percentage Complete
 
 donor_pages:
+  international_projects_title: International Projects
+  national_projects_title: National Projects
   print: Print
-  donor_stats_funds: Total Funds (USD)
+  international_donor_stats_funds: Total Funds (USD)
+  national_donor_stats_funds: Total Funds (ُEGP)
   donor_stats_funded_1: Project
   donor_stats_funded_2: Projects
-  donor_stats_funded_3: Funded
+  international_donor_stats_funded_3: Donor
+  national_donor_stats_funded_3: Funded
   donor_chart_title: Amount Funded (USD )
   funded_title: Projects Funded
+  currency_international_projects: USD
+  currency_national_projects : EGP
 
 currency_values:
   total_currency_B: Bn

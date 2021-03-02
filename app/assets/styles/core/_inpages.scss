@@ -252,6 +252,10 @@
     @include media(small-down) {
       margin-top: 4rem;
     }
+    .title-project-donor{
+      text-align: center;
+      margin-bottom: 30px;
+    }
   }
   .inpage__col--map {
     color: red;

@@ -44,32 +44,39 @@ var Donor = React.createClass({
         return sluggedName === donorName;
       });
     });
+    const internationalProjects = donorProjects.filter(({type})=> type === 'international');
+    const nationalProjects = donorProjects.filter(({type})=> type === 'national');
     const donorDisplayName = donorMeta[lang];
 
     const markers = getProjectCentroids(donorProjects, this.props.api.geography);
     const mapLocation = getFeatureCollection(markers);
-
-    const projectBudgets = donorProjects
+    const getTotalBudgets = (dProjects)=>{
+      const projectBudgets = dProjects
       .map((project) => project.budget)
       .reduce((a, b) => a.concat(b), []);
 
-    const chartData = donorProjects.map((project) => {
-      return {
-        name: lang === 'ar' ? project.name_ar : project.name,
-        link: path.resolve(basepath, 'projects', project.id),
-        value: project.budget.reduce((cur, item) => cur + item.fund.amount, 0)
-      };
-    }).sort((a, b) => b.value > a.value ? -1 : 1);
+      const totalResult = projectBudgets.reduce((currentValue, budget) => {
+        return budget.fund.amount + currentValue;
+      }, 0);
 
-    // TODO change this to 2 amounts dispursed and remaining
-    const totalBudget = projectBudgets.reduce((currentValue, budget) => {
-      return budget.fund.amount + currentValue;
-    }, 0);
+      return totalResult
+    }
+    const getChartData = (dProjects)=>{
+      const chartData = dProjects.map((project) => {
+        return {
+          name: lang === 'ar' ? project.name_ar : project.name,
+          link: path.resolve(basepath, 'projects', project.id),
+          value: project.budget.reduce((cur, item) => cur + item.fund.amount, 0)
+        };
+      }).sort((a, b) => b.value > a.value ? -1 : 1);
+      
+      return chartData
+    }
 
     const csvSummary = {
       title: 'Donor Summary',
       data: {
-        budget: totalBudget,
+        budget: getTotalBudgets(donorProjects),
         projects_funded: donorProjects.length
       }
     };
@@ -77,11 +84,13 @@ var Donor = React.createClass({
     const csvChartData = [
       {
         title: 'Donor Project Funding',
-        data: chartData
+        data: getChartData(donorProjects)
       }
     ];
 
-    const singleProject = donorProjects.length <= 1 ? ' funding--single' : '';
+    const singleProject = donorProjects.length < 1 ? ' funding--single' : '';
+    const singleInternationalProject = internationalProjects.length <= 1 ? ' funding--single' : '';
+    const singleNationalProject = nationalProjects.length <= 1 ? ' funding--single' : '';
     const t = get(window.t, [lang, 'donor_pages'], {});
     return (
       <section className='inpage funding'>
@@ -113,22 +122,48 @@ var Donor = React.createClass({
                 <Map markers={markers} location={mapLocation} lang={lang} />
               </div>
               <div className='inpage__col--content'>
-                <ul className='inpage-stats d-block'>
-                  <li  className="donor-info"> {currency(shortTally(totalBudget))} <small>{t.donor_stats_funds}</small></li>
-                  <li  className="donor-info"> {tally(donorProjects.length)} <small>{singleProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.donor_stats_funded_3}</small></li>
-                </ul>
-                {!singleProject && (
-                  <div className='inpage__overview-chart'>
-                    <div className='chart-content'>
-                    <HorizontalBarChart
-                      lang={lang}
-                      data={chartData}
-                      margin={barChartMargin}
-                      xFormat={shortTally}
+                {internationalProjects.length > 0 &&
+                    <div>
+                      <h1 className='title-project-donor'>{t.international_projects_title}</h1>
+                      <ul className='inpage-stats d-block'>
+                        <li  className="donor-info"> {shortTally(getTotalBudgets(internationalProjects))} {t.currency_international_projects} <small>{t.international_donor_stats_funds}</small></li>
+                        <li  className="donor-info"> {tally(internationalProjects.length)} <small>{singleInternationalProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.international_donor_stats_funded_3}</small></li>
+                      </ul>
+                      {!singleInternationalProject && (
+                        <div className='inpage__overview-chart'>
+                          <div className='chart-content'>
+                          <HorizontalBarChart
+                            lang={lang}
+                            data={getChartData(internationalProjects)}
+                            margin={barChartMargin}
+                            xFormat={shortTally}
 
-                    />
+                          />
+                          </div>
+                      </div>)}
+                    </div>
+                }
+                {nationalProjects.length > 0 && (
+                  <div>
+                    <h1 className='title-project-donor'>{t.national_projects_title}</h1>
+                    <ul className='inpage-stats d-block'>
+                      <li  className="donor-info"> {shortTally(getTotalBudgets(nationalProjects))} {t.currency_national_projects} <small>{t.national_donor_stats_funds}</small></li>
+                      <li  className="donor-info"> {tally(nationalProjects.length)} <small>{singleNationalProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.national_donor_stats_funded_3}</small></li>
+                    </ul>
+                    {!singleNationalProject && (
+                      <div className='inpage__overview-chart'>
+                        <div className='chart-content'>
+                        <HorizontalBarChart
+                          lang={lang}
+                          data={getChartData(nationalProjects)}
+                          margin={barChartMargin}
+                          xFormat={shortTally}
+
+                        />
+                         </div>
+                    </div>)}
                   </div>
-                </div>)}
+                )}
               </div>
             </section>
           </div>

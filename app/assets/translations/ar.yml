@@ -162,16 +162,23 @@ project_pages:
 
 category_pages:
   print: 'طباعة'
-  stat_one: 'جُملة التمويل - بالدولار الأمريكي'
+  international_stat_one: 'جُملة التمويل - بالدولار الأمريكي'
+  national_stat_one: 'جُملة التمويل - بالجنيه المصرى'
   cat_stats_funded_1: 'المشروع'
   cat_stats_funded_2: 'المشروعات'
-  cat_stats_funded_3: 'المُمولة'
+  international_cat_stats_funded_3: 'المانحة'
+  national_cat_stats_funded_3: 'المُمولة'
   comparison_title: 'مقارنة'
   comparison_chart_title1: 'عدد المشروعات حسب القطاع الفرعي'
-  comparison_chart_title2: 'تمويل المشروعات حسب القطاع الفرعي - بالدولار الأمريكي'
+  international_comparison_chart_title2: 'تمويل المشروعات حسب القطاع الفرعي - بالدولار الأمريكي'
+  national_comparison_chart_title2: 'تمويل المشروعات حسب القطاع الفرعي - بالجنيه المصرى'
+
   projects_parttitle: 'المشروعات'
-  category_funding_chart_title: 'التمويل - بالدولار الأمريكي'
+  international_category_funding_chart_title: 'التمويل - بالدولار الأمريكي'
+  national_category_funding_chart_title: 'التمويل - بالجنيه المصرى'
   category_complete_chart_title: 'نسبة الانتهاء'
+  currency_international_projects: 'دولار'
+  currency_national_projects: 'ج.م'
 
 donor_pages:
   international_projects_title: 'المشروعات الدولية'

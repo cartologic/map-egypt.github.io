@@ -33,12 +33,29 @@ var Category = React.createClass({
       return <div></div>; // TODO loading indicator
     }
     const { lang } = this.props.meta;
+    const categoryName = this.props.params.name;
+    let categoryDisplayName;
+     // find all projects with this particular category
+     const categoryProjects = projects.filter((project) => {
+      return get(project, 'categories', []).find((item) => {
+        let sluggedName = slugify(item.en);
+        if (sluggedName === categoryName) {
+          categoryDisplayName = item[lang];
+          return true;
+        }
+        return false;
+      });
+    });
+    const projectType = categoryProjects[0].type;
+    const isInternationalProject = projectType === 'international';
+    const subProjects = projects.filter(({type})=> type === projectType);
+
     const basepath = '/' + lang;
     // hold onto the mappings between category key (english name) and
     // the object holding both english and arabic name strings.
     const categoryNames = {};
     // Count number of projects per category
-    const justCategories = projects.map((project) => {
+    const justCategories = subProjects.map((project) => {
       let budgets = project.budget || [];
       let budget = budgets.reduce((cur, item) => cur + get(item, 'fund.amount', 0), 0);
       return get(project, 'categories', []).map((category) => {
@@ -74,20 +91,7 @@ var Category = React.createClass({
       };
     }).sort((a, b) => b.value > a.value ? -1 : 1);
 
-    const categoryName = this.props.params.name;
-    let categoryDisplayName;
 
-    // find all projects with this particular category
-    const categoryProjects = projects.filter((project) => {
-      return get(project, 'categories', []).find((item) => {
-        let sluggedName = slugify(item.en);
-        if (sluggedName === categoryName) {
-          categoryDisplayName = item[lang];
-          return true;
-        }
-        return false;
-      });
-    });
 
     const markers = getProjectCentroids(categoryProjects, this.props.api.geography);
     const mapLocation = getFeatureCollection(markers);
@@ -162,8 +166,8 @@ var Category = React.createClass({
             </div>
             <div className='inpage__header-data'>
               <ul className='inpage-stats'>
-                <li> {currency(shortTally(totalBudget))} <small>{t.stat_one}</small></li>
-                <li> {tally(categoryProjects.length)} <small>{singleProject ? t.cat_stats_funded_1 : t.cat_stats_funded_2} {t.cat_stats_funded_3}</small></li>
+                <li> {shortTally(totalBudget)} {isInternationalProject ? t.currency_international_projects : t.currency_national_projects} <small>{isInternationalProject ? t.international_stat_one : t.national_stat_one}</small></li>
+                <li> {tally(categoryProjects.length)} <small>{singleProject ? t.cat_stats_funded_1 : t.cat_stats_funded_2} {isInternationalProject ? t.international_cat_stats_funded_3 : t.national_cat_stats_funded_3}</small></li>
               </ul>
             </div>
           </div>
@@ -185,7 +189,7 @@ var Category = React.createClass({
                 />
               </div>
               <div className='chart-content chart__inline--labels'>
-                <h3>{t.comparison_chart_title2}</h3>
+                <h3>{isInternationalProject ?  t.international_comparison_chart_title2 : t.national_comparison_chart_title2 }</h3>
                 <HorizontalBarChart
                   lang={this.props.meta.lang}
                   data={budgetPerCategoryChartData}
@@ -199,7 +203,7 @@ var Category = React.createClass({
             <section className='inpage__section'>
               <h1 className='section__title heading--small'>{categoryDisplayName} {t.projects_parttitle}</h1>
               <div className='chart-content chart__inline--labels'>
-                {!singleProject && (<h3>{t.category_funding_chart_title}</h3>)}
+                {!singleProject && (<h3>{isInternationalProject ? t.international_category_funding_chart_title : t.national_category_funding_chart_title}</h3>)}
                 {!singleProject && (<HorizontalBarChart
                  lang={this.props.meta.lang}
                  data={chartData}

@@ -164,18 +164,24 @@ project_pages:
   related_sds_national_projects_title: Other National Projects
 category_pages:
   print: Print
-  stat_one: Total Funds (USD)
+  international_stat_one: Total Funds (USD)
+  national_stat_one: Total Funds (EGP)
   cat_stats_funded_1: Project
   cat_stats_funded_2: Projects
-  cat_stats_funded_3: Funded
+  international_cat_stats_funded_3: Donor
+  national_cat_stats_funded_3: Funded
 
   comparison_title: Comparison
   comparison_chart_title1: Number of Projects per Category
-  comparison_chart_title2: Funding of Projects per Category (USD)
+  international_comparison_chart_title2: Funding of Projects per Category (USD)
+  national_comparison_chart_title2: Funding of Projects per Category (EGP)
 
   projects_parttitle: Projects
-  category_funding_chart_title: Funding (USD)
+  international_category_funding_chart_title: Funding (USD)
+  national_category_funding_chart_title: Funding (EGP)
   category_complete_chart_title: Percentage Complete
+  currency_international_projects: USD
+  currency_national_projects : EGP
 
 donor_pages:
   international_projects_title: International Projects

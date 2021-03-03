@@ -311,6 +311,11 @@
           content: '';
         }
       }
+      .no-comma{
+        &:after {
+          content: '';
+        }
+      }
     }
   }
 

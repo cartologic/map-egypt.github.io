@@ -269,11 +269,11 @@ var Project = React.createClass({
               </div>
               <div className='inpage__col--content'>
                 <ul className='inpage-stats'>
-                  <li className='num__internal--large'>{currency(currencyValue, shortTally(budget))}
+                  <li className='num__internal--large no-coma'>{currency(currencyValue, shortTally(budget))}
                     <small>{t.budget_title}</small>
                     <ul className='num__internal'>
-                      <li>{currency(currencyValue, shortTally(budgetBreakdown.loan))} {t.funding_loans_title}</li>
-                      <li>{currency(currencyValue, shortTally(budgetBreakdown.grant))} {t.funding_grants_title}</li>
+                      <li className='no-comma'>{currency(currencyValue, shortTally(budgetBreakdown.loan))} {t.funding_loans_title}</li>
+                      <li className='no-comma'>{currency(currencyValue, shortTally(budgetBreakdown.grant))} {t.funding_grants_title}</li>
                       <li>{currency(currencyValue, shortTally(budgetBreakdown['local contribution']))} {t.funding_local_title}</li>
                     </ul>
                   </li>

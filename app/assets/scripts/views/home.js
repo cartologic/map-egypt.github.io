@@ -83,7 +83,7 @@ var Home = React.createClass({
 
       return bars;
     }
-/*******************function for get budgets summary for international project ********************** */
+/*  ******************function for get budgets summary for international project ********************** */
     function getInternationalBudgetsSummary (p) {
       let budgetSummary = {loan: 0, grant: 0, 'local contribution': 0};
       p.forEach((project) => {
@@ -102,9 +102,9 @@ var Home = React.createClass({
       return budgetSummary;
     }
 
-    /************ function for get budgets summary for national project ************/
+    /*  *********** function for get budgets summary for national project ************/
     function getNationalBudgetsSummary (p) {
-      let budgetSummary = {'government budget allocation':0, 'in-kind':0, loan: 0, 'private sector':0 ,'local non-profit organization': 0, grant: 0};
+      let budgetSummary = {'government budget allocation': 0, 'in-kind': 0, loan: 0, 'private sector': 0, 'local non-profit organization': 0, grant: 0};
       p.forEach((project) => {
         let budgets = project.budget || [];
         budgets.forEach((fund) => {
@@ -251,7 +251,7 @@ var Home = React.createClass({
                     <p className='status-key__label budget-private'>{t.chart_three_label7}</p>
                     <p className='status-key__label budget-grant '>{t.chart_three_label2}</p>
                     <p className='status-key__label budget-non-profit last'>{t.chart_three_label4}</p>
-                  
+
                   </div>
                 </div>
               </div>
@@ -265,7 +265,7 @@ var Home = React.createClass({
             <p className='section__description'>{t.other_indicators_description}</p>
             <ul className='section__footer'>
               <li><Link to={'/' + lang + '/indicators'} type='button' className='button button--primary button--large'>{t.all_social_indicators}</Link></li>
-             
+
             </ul>
           </section>
         </div>

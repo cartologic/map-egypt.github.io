@@ -4,5 +4,5 @@ export function indicatorTooltipContent (indicator, lang) {
   const defaultDescriptionLabel = t.description_default_value;
   const indicatorDescription = lang === 'en' ? indicator.description : indicator.description_ar;
   return `<span class="tooltip__description">${t.description_label} : &nbsp; ${indicatorDescription !== null ? indicatorDescription : defaultDescriptionLabel}</span>` +
-    `<span class="tooltip__sources">${t.sources_label}: ${indicator.sources ? indicator.sources.map(item => item[lang]  ? item[lang] :  defaultDescriptionLabel ) : defaultDescriptionLabel }</span>`;
+    `<span class="tooltip__sources">${t.sources_label}: ${indicator.sources ? indicator.sources.map(item => item[lang] ? item[lang] : defaultDescriptionLabel) : defaultDescriptionLabel}</span>`;
 }

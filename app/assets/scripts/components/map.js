@@ -108,16 +108,16 @@ const Map = React.createClass({
       const leafletMarker = L.marker(marker.centroid, {
         icon: L.mapbox.marker.icon({'marker-symbol': 'circle', 'marker-color': '2B2342'})
       });
-      
-      const status = (marker.ontime).split(' ').join('_').toLowerCase()
-      const statusClass =(marker.ontime).split(' ').join('').toLowerCase()
+
+      const status = (marker.ontime).split(' ').join('_').toLowerCase();
+      const statusClass = (marker.ontime).split(' ').join('').toLowerCase();
       const accessor = marker.isDistrict ? byNameDist : byNameGove;
       const location = accessor(marker.region)[locationLang];
       const markerName = lang === 'en' ? marker.name : marker.nameArabic;
       leafletMarker.bindPopup(
         `<div class='marker__internal'>` +
           `<h5 class='marker__title'><a href='#/${lang}/projects/${marker.id}' class='link--deco'>${markerName}</a></h5>` +
-          `<dl class='card-meta ${'project--'+statusClass }'>` +
+          `<dl class='card-meta ${'project--' + statusClass}'>` +
               `<dt class='card-meta__label'>Status</dt>` +
               `<dd class='card-meta__value card-meta__value--status'>${t[status]}</dd>` +
               `<dt class='card-meta__label'>Location</dt>` +
@@ -347,10 +347,8 @@ const Map = React.createClass({
           );
         })}
         <span className='legend__overlay--units'>
-          {this.props.lang === 'en' ?
-           overlay.units && overlay.units.toLowerCase() !== 'unknown' ? `${overlay.units} (${t.units_label})` : ''
-            :
-            overlay.units_ar ? `${overlay.units_ar} (${t.units_label})` : ''
+          {this.props.lang === 'en'
+          ? overlay.units && overlay.units.toLowerCase() !== 'unknown' ? `${overlay.units} (${t.units_label})` : '' : overlay.units_ar ? `${overlay.units_ar} (${t.units_label})` : ''
           }
         </span>
       </span>

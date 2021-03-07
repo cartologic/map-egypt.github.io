@@ -175,10 +175,12 @@ category_pages:
 
 donor_pages:
   print: 'طباعة'
-  donor_stats_funds: 'جُملة التمويل - بالدولار الأمريكي'
+  international_donor_stats_funds: 'جُملة التمويل - بالدولار الأمريكي'
+  national_donor_stats_funds: 'جُملة التمويل - بالجنيه المصرى'
   donor_stats_funded_1: 'المشروع'
   donor_stats_funded_2: 'المشروعات'
-  donor_stats_funded_3: 'المُمولة'
+  international_donor_stats_funded_3: 'المانحة'
+  national_donor_stats_funded_3: 'المُمولة'
   donor_chart_title: 'التمويل - بالدولار الأمريكي'
   funded_title: 'المشروعات المُمولة'
 

@@ -9,7 +9,6 @@ import Map from '../components/map';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
 import ProjectList from '../components/project-list';
-import { isOntime } from '../components/project-card';
 import { governorates } from '../utils/governorates';
 import { GOVERNORATE, DISTRICT, getProjectCentroids } from '../utils/map-utils';
 import {SDS_ARABIC_ORDER} from '../utils/constants';
@@ -34,15 +33,6 @@ function countByProp (array, path) {
 // Otherwise sorts alphabetically.
 
 // Project filters
-const STATUS = {
-  translationPath: 'project_status',
-  items: (projects, lang, t) => {
-    return [
-      { display: t.status_ontime, filter: isOntime },
-      { display: t.status_delayed, filter: (p) => !isOntime(p) }
-    ];
-  }
-};
 
 const CATEGORY = {
   translationPath: 'category',
@@ -90,7 +80,7 @@ const SDG = {
   items: (projects, lang) => {
     const goals = countByProp(projects.reduce((a, b) => a.concat(b.sdg_indicators), []), lang);
     return Object.keys(goals).map((goal) => goal).sort().map((goal) => ({
-      display: `${goal} `, //(${goals[goal]})
+      display: `${goal} `, // (${goals[goal]})
       filter: (p) => Array.isArray(p.sdg_indicators) && p.sdg_indicators.map(d => d[lang]).indexOf(goal) >= 0
     }));
   },
@@ -103,7 +93,7 @@ const SDG = {
   }
 };
 
-const projectFilters = [STATUS, CATEGORY, DONOR, SDS, SDG];
+const projectFilters = [CATEGORY, DONOR, SDS, SDG];
 
 var InternationalProjectBrowse = React.createClass({
   displayName: 'InternationalProjectBrowse',
@@ -157,7 +147,7 @@ var InternationalProjectBrowse = React.createClass({
 
   zoomToGovernorate: function (e) {
     const governorateId = e.target.value;
-    const selectedGovernorate = governorates.find(({id}) => id == governorateId);
+    const selectedGovernorate = governorates.find(({id}) => id.toLocaleString() === governorateId);
     this.setState({
       activeGovernorate: selectedGovernorate,
       valueSearch: governorateId

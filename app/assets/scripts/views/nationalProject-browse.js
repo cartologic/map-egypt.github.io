@@ -9,7 +9,6 @@ import Map from '../components/map';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
 import ProjectList from '../components/project-list';
-import { isOntime } from '../components/project-card';
 import { governorates } from '../utils/governorates';
 import { GOVERNORATE, DISTRICT, getProjectCentroids } from '../utils/map-utils';
 import {SDS_ARABIC_ORDER} from '../utils/constants';
@@ -35,15 +34,6 @@ function countByProp (array, path) {
 // Otherwise sorts alphabetically.
 
 // Project filters
-const STATUS = {
-  translationPath: 'project_status',
-  items: (projects, lang, t) => {
-    return [
-      { display: t.status_ontime, filter: isOntime },
-      { display: t.status_delayed, filter: (p) => !isOntime(p) }
-    ];
-  }
-};
 
 const CATEGORY = {
   translationPath: 'sector',
@@ -104,7 +94,7 @@ const SDG = {
   }
 };
 
-const projectFilters = [STATUS, CATEGORY, DONOR, SDS, SDG];
+const projectFilters = [CATEGORY, DONOR, SDS, SDG];
 
 var NationalProjectBrowse = React.createClass({
   displayName: 'National ProjectBrowse',
@@ -160,7 +150,7 @@ var NationalProjectBrowse = React.createClass({
 
   zoomToGovernorate: function (e) {
     const governorateId = e.target.value;
-    const selectedGovernorate = governorates.find(({id}) => id == governorateId);
+    const selectedGovernorate = governorates.find(({id}) => id.toLocaleString() === governorateId);
     this.setState({
       activeGovernorate: selectedGovernorate,
       valueSearch: governorateId

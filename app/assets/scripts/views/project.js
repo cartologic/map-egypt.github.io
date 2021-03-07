@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { get } from 'object-path';
-import { uniq, _ } from 'lodash';
+import { _ } from 'lodash';
 import { getProject } from '../actions';
 import slugify from '../utils/slugify';
 import { formatDate, SimpleDate, formatSimpleDate, parseProjectDate } from '../utils/date';
@@ -22,7 +22,6 @@ import ProjectTimeline from '../components/project-timeline';
 import HorizontalBarChart from '../components/charts/horizontal-bar';
 import Print from '../components/print-btn';
 import CSVBtn from '../components/csv-btn';
-
 
 function linkPath (base, type, id) {
   return path.resolve(base, type, slugify(id));
@@ -43,7 +42,7 @@ var Project = React.createClass({
   getInitialState: function () {
     return {
       authenticated: hasValidToken(),
-      barChartMargin : { left: 500, right: 20, top: 10, bottom: 50 }
+      barChartMargin: { left: 500, right: 20, top: 10, bottom: 50 }
     };
   },
 
@@ -51,11 +50,10 @@ var Project = React.createClass({
     if (hasValidToken()) {
       this.setState({ authenticated: true });
     }
-    if(window.innerWidth < 460){
+    if (window.innerWidth < 460) {
       this.setState({
-        barChartMargin : { left: 150, right: 20, top: 10, bottom: 50 }
-      }) 
-
+        barChartMargin: { left: 150, right: 20, top: 10, bottom: 50 }
+      });
     }
     this.props.dispatch(getProject(this.props.params.id));
   },
@@ -132,10 +130,10 @@ var Project = React.createClass({
       link: d.link,
       value: get(d, 'project.number_served', []).reduce((total, item) => total + get(item, 'number_served'), 0)
     }));
-    function getDonors() {
+    function getDonors () {
       let donorsAmount = [];
       let amountMoney = 0;
-      const budget = get(data, "budget", []);
+      const budget = get(data, 'budget', []);
 
       budget.forEach(function (primaryDonor) {
         budget.map((secondDonor) => {
@@ -145,8 +143,8 @@ var Project = React.createClass({
         });
         donorsAmount.push({
           name: primaryDonor.donor[lang],
-          link: linkPath(basepath, "donor", primaryDonor.donor.en),
-          value: amountMoney,
+          link: linkPath(basepath, 'donor', primaryDonor.donor.en),
+          value: amountMoney
         });
         amountMoney = 0;
       });
@@ -197,7 +195,7 @@ var Project = React.createClass({
     const relatedSdsProjectsTitle = isInternationalProject ? t.related_sds_international_projects_title : t.related_sds_national_projects_title;
     // get currency value according to project type
     const currencyValue = isInternationalProject ? t.currency_international_projects : t.currency_national_projects;
-    const {barChartMargin} = this.state
+    const {barChartMargin} = this.state;
     return (
       <section className='inpage'>
         <header className='inpage__header'>
@@ -344,17 +342,17 @@ var Project = React.createClass({
                     </ul>
                   </div>
                 )}
-                {data.components && (   
+                {data.components && (
                   <div className='overview-item--alt'>
                     <h2 className='overview-item__title heading-alt'>{t.kmi_components}</h2>
                     <ul className='link-list'>
-                    {data.components.map((component,i) => {
+                    {data.components.map((component, i) => {
                       return (
                           <li key={i}>
                             <span>{isArabic ? component.component_ar : component.component}</span>
                           </li>
                         );
-                      })
+                    })
                    }
                     </ul>
                   </div>
@@ -488,19 +486,6 @@ var Project = React.createClass({
                   activeProject={projectDisplayName}
                 />
               </div>
-              {authenticated ? (
-                <div className='chart-content chart__inline--labels'>
-                  <h3>{t.comparision_chart_title3}</h3>
-                  <HorizontalBarChart
-                    lang={lang}
-                    data={served}
-                    margin={barChartMargin}
-                    yTitle=''
-                    xFormat={tally}
-                    activeProject={projectDisplayName}
-                  />
-                </div>
-              ) : null}
             </section>
           </div>
           <section className='inpage__section--bleed'>

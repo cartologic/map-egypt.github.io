@@ -342,6 +342,21 @@
     color: #cec4c4;
     padding-right: 5px;
   }
+  .donor-info {
+    float: left;
+    box-shadow: 1px 0 0 #E9E9E9;
+    margin-left: 0;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    padding-left: 0;
+    &:last-child {
+      box-shadow: none;
+    };
+    @include media(medium-up) {
+      padding-left: 0;
+      margin-left: 0;
+    }
+  }
 }
 
 .inpage__overview-links {

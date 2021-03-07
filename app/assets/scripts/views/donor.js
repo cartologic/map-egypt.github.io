@@ -26,8 +26,8 @@ var Donor = React.createClass({
 
   render: function () {
     const projects = get(this.props, 'api.projects', []);
-    const isMobile = window.innerWidth < 460
-    const barChartMargin = isMobile ?  { left: 150, right: 20, top: 10, bottom: 50 } : { left: 330, right: 10, top: 10, bottom: 50 }
+    const isMobile = window.innerWidth < 460;
+    const barChartMargin = isMobile ? { left: 150, right: 20, top: 10, bottom: 50 } : { left: 330, right: 10, top: 10, bottom: 50 };
     if (projects.length === 0) {
       return <div></div>; // TODO loading indicator
     }
@@ -114,8 +114,8 @@ var Donor = React.createClass({
               </div>
               <div className='inpage__col--content'>
                 <ul className='inpage-stats d-block'>
-                  <li> {currency(shortTally(totalBudget))} <small>{t.donor_stats_funds}</small></li>
-                  <li> {tally(donorProjects.length)} <small>{singleProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.donor_stats_funded_3}</small></li>
+                  <li className="donor-info"> {currency(shortTally(totalBudget))} <small>{t.donor_stats_funds}</small></li>
+                  <li className="donor-info"> {tally(donorProjects.length)} <small>{singleProject ? t.donor_stats_funded_1 : t.donor_stats_funded_2} {t.donor_stats_funded_3}</small></li>
                 </ul>
                 {!singleProject && (
                   <div className='inpage__overview-chart'>

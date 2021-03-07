@@ -170,7 +170,8 @@ category_pages:
   cat_stats_funded_3: Funded
 
   comparison_title: Comparison
-  comparison_chart_title1: Number of Projects per Category
+  international_comparison_chart_title2: Funding of Projects per Category (USD)
+  national_comparison_chart_title2: Funding of Projects per Category (EGP)
   comparison_chart_title2: Funding of Projects per Category (USD)
 
   projects_parttitle: Projects

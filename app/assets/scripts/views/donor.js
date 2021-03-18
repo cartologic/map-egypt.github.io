@@ -173,7 +173,7 @@ var Donor = React.createClass({
           <section className='inpage__section--bleed inpage__section--print'>
           {internationalProjects.length > 0 && (
                 <div className="inner">
-                  <h1 className='section__title heading--small'>{t.donor_stats_funded_2} {t.international_donor_stats_funded_3}</h1>
+                  <h1 className='section__title heading--small'>{h.International_projects_title}</h1>
                   <ul className='projects-list'>
                     {internationalProjects.map((p) => {
                       return (
@@ -188,7 +188,7 @@ var Donor = React.createClass({
               )}
                {nationalProjects.length > 0 && (
                 <div className="inner">
-                  <h1 className='section__title heading--small'>{t.donor_stats_funded_2} {t.national_donor_stats_funded_3}</h1>
+                  <h1 className='section__title heading--small'>{h.National_projects_title}</h1>
                   <ul className='projects-list'>
                     {nationalProjects.map((p) => {
                       return (

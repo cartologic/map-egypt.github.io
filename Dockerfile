@@ -1,6 +1,13 @@
 # pull official base image
 FROM node:6.11-stretch as build
 
+# Update to use archived repositories and remove the unavailable ones
+RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list && \
+    sed -i '/security.debian.org/d' /etc/apt/sources.list && \
+    sed -i '/stretch-updates/d' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
+    apt-get update && apt-get install -y gdal-bin
+
 # set working directory
 WORKDIR /app
 
@@ -9,14 +16,10 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY . ./
-# COPY yarn.lock ./
-RUN npm install -g yarn
 RUN yarn install
 
-
-RUN apt-get update && apt-get install -y gdal-bin
+# Build the app with Geo functionality
 RUN yarn build-geo
-
 RUN npm run build
 
 # production environment
